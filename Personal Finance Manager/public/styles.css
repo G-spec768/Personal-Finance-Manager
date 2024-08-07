@@ -28,6 +28,10 @@ footer {
 main {
     padding: 20px;
     flex: 1;
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    flex-direction: column;
 }
 
 h1, h2 {
@@ -50,7 +54,9 @@ form {
     border: 1px solid #ccc;
     border-radius: 5px;
     max-width: 400px;
-    margin: 0 auto;
+    width: 100%; /* Ensure form takes full width of its container */
+    margin: 20px 0; /* Add margin to separate forms from other elements */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 label {
@@ -65,6 +71,7 @@ input[type="text"], input[type="password"] {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 input[type="submit"] {
@@ -74,6 +81,8 @@ input[type="submit"] {
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%; /* Ensure button takes full width of its container */
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
 }
 
 input[type="submit"]:hover {
