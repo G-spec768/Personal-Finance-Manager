@@ -1,4 +1,4 @@
-// public/register.php
+<!-- // public/register.php -->
 <?php include('../templates/header.php'); ?>
 
 <h2>Register</h2>

@@ -1,4 +1,4 @@
-// src/register_user.php
+<!-- // src/register_user.php -->
 <?php
 include('config.php');
 

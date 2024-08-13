@@ -1,4 +1,4 @@
-// src/config.php
+<!-- // src/config.php -->
 <?php
 $servername = "localhost";
 $username = "root";
