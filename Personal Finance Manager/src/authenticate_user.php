@@ -1,4 +1,4 @@
-// src/authenticate_user.php
+<!-- // src/authenticate_user.php -->
 <?php
 include('config.php');
 

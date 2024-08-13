@@ -1,0 +1,74 @@
+/* public/css/transactions_styles.css */
+
+.transactions-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-container h1 {
+    color: #004080;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.transactions-container form {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transactions-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+}
+
+.transactions-container input[type="date"],
+.transactions-container input[type="text"],
+.transactions-container input[type="number"],
+.transactions-container select,
+.transactions-container input[type="submit"] {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.transactions-container input[type="submit"] {
+    background-color: #004080;
+    color: #fff;
+    cursor: pointer;
+}
+
+.transactions-container input[type="submit"]:hover {
+    background-color: #003366;
+}
+
+#transactions-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+#transactions-table th, #transactions-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#transactions-table th {
+    background-color: #004080;
+    color: white;
+}
