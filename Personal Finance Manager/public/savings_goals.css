@@ -1,0 +1,90 @@
+/* Savings Goals Page Styles */
+.savings-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.savings-container h1 {
+    color: #004080; /* Dark blue */
+    margin-bottom: 20px;
+}
+
+#add-goal-form fieldset {
+    border: none;
+    margin-bottom: 20px;
+    padding: 0;
+}
+
+#add-goal-form legend {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+#add-goal-form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+#add-goal-form input[type="text"],
+#add-goal-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#add-goal-form input[type="submit"] {
+    background-color: #004080; /* Dark blue */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#add-goal-form input[type="submit"]:hover {
+    background-color: #00264d; /* Darker blue */
+}
+
+.goals-list {
+    margin-top: 20px;
+}
+
+.goal-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.goal-item h3 {
+    color: #004080; /* Dark blue */
+    margin-bottom: 10px;
+}
+
+.progress-container {
+    background-color: #eee;
+    border-radius: 5px;
+    height: 20px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress-bar {
+    background-color: #004080; /* Dark blue */
+    height: 100%;
+    transition: width 0.3s;
+}

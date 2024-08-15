@@ -1,19 +1,18 @@
-/* styles.css */
-
 /* Dashboard Container */
 .dashboard-container {
-    max-width: 800px;
+    width: 80%;  /* Updated to cover 80% of the page width */
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: #000; /* Black background for elements */
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
+    color: #fff; /* White font color */
 }
 
-.dashboard-container h1 {
-    color: #004080; /* Dark blue */
-    margin-bottom: 20px;
+.dashboard-container h1,
+.dashboard-container p {
+    color: #fff; /* White font color */
 }
 
 .dashboard-container form {
@@ -24,21 +23,23 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #333;
+    color: #fff; /* White font color */
 }
 
 .dashboard-container input[type="number"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #ccc;
+    border: 1px solid #fff; /* White border */
     border-radius: 5px;
+    background-color: #000; /* Black input field */
+    color: #fff; /* White text color inside input */
     box-sizing: border-box;
 }
 
 .dashboard-container input[type="submit"] {
     background-color: #004080; /* Dark blue */
-    color: #fff;
+    color: #fff; /* White text */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -57,4 +58,35 @@
     position: relative;
     height: 400px;
     width: 100%;
+    color: #fff; /* White text color */
+}
+
+/* Add these styles to the existing dashboard.css */
+
+/* Header styles */
+header {
+    background-color: #000; /* Black background for the header */
+    padding: 10px 0;
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff; /* White font color for the links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #ccc; /* Light grey color when hovering over the links */
 }

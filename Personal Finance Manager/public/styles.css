@@ -129,12 +129,51 @@ header, footer {
     margin: 0;
 }
 
-.cta a {
-    color: #004080; /* Dark blue */
+/* .cta a {
+    color: #004080; 
     font-weight: bold;
     text-decoration: none;
 }
 
 .cta a:hover {
     text-decoration: underline;
+} */
+
+.container {
+    text-align: center;
+    padding: 20px;
+}
+
+.chart-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+h1 {
+    color: #fff; /* White text */
+}
+
+p {
+    color: #ccc; /* Light grey text */
+}
+
+.cta h2 {
+    margin-top: 40px;
+    color: #fff;
+}
+
+.cta p {
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.cta a {
+    color: #4bc0c0;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.cta a:hover {
+    color: #36a2eb;
 }

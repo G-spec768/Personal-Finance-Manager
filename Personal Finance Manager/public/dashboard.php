@@ -1,4 +1,3 @@
-<!-- public/dashboard.php -->
 <?php
 session_start();
 
@@ -15,10 +14,9 @@ if (!isset($_SESSION['user_id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
     <title>Dashboard</title>
-    
 </head>
 <body>
-<?php include('../templates/header.php'); ?>
+<?php include('../templates/user_header.php'); ?>
 <div class="dashboard-container">
     <h1>Welcome to Your Dashboard</h1>
     <p>Manage your finances by entering your income, expenses, and budget.</p>
@@ -42,8 +40,6 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 
 <?php include('../templates/footer.php'); ?>
-<!-- Add this to the end of your dashboard.php just before the closing body tag -->
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 document.getElementById('finance-form').addEventListener('submit', function(event) {
@@ -93,7 +89,3 @@ document.getElementById('finance-form').addEventListener('submit', function(even
 
 </body>
 </html>
-
-
-
-
