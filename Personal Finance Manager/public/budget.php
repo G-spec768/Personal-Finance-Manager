@@ -1,4 +1,3 @@
-<!-- public/budget.php -->
 <?php
 session_start();
 
@@ -9,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 // Include database connection
-include('src\config.php');
+include('../src/config.php');
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -31,23 +30,21 @@ $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 $budget_items = $result->fetch_all(MYSQLI_ASSOC);
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="budget_styles.css">
-    <title>Budget</title>
+    <link rel="stylesheet" href="dashboard.css"> <!-- Reuse the same CSS -->
+    <title>Manage Budget</title>
 </head>
 <body>
-<?php include('../templates/header.php'); ?>
-
-<div class="budget-container">
+<?php include('../templates/user_header.php'); ?>
+<div class="dashboard-container">
     <h1>Your Budget</h1>
+    
     <form id="budget-form" method="POST">
         <label for="category">Category:</label>
         <select id="category" name="category" required>
@@ -83,11 +80,6 @@ $budget_items = $result->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <?php include('../templates/footer.php'); ?>
-
-<!-- <script src="../js/budget.js"></script> -->
 <script src="budget.js"></script>
-
-
-
 </body>
 </html>

@@ -1,49 +1,126 @@
-<!-- public/index.php -->
 <?php include('../templates/header.php'); ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Personal Finance Management System</title>
+</head>
+<body>
+
 <div class="container">
-    <h1>Welcome to Personal Finance Management System</h1>
-    <p>Your ultimate tool for managing personal finances efficiently and effectively. Our platform provides various features to help you track your income, expenses, savings, and investments.</p>
+    <h1>Welcome to Your Finance Dashboard</h1>
+    <p>Track and manage your finances with ease. See how you're doing at a glance.</p>
 
-    <section class="features">
-        <h2>Features</h2>
-        <ul>
-            <li><strong>Expense Tracking:</strong> Record and categorize your daily expenses to get a clear picture of your spending habits.</li>
-            <li><strong>Budget Planning:</strong> Create and manage your monthly budget to ensure you're on track with your financial goals.</li>
-            <li><strong>Investment Monitoring:</strong> Keep an eye on your investments and their performance to make informed decisions.</li>
-            <li><strong>Income Management:</strong> Track all your income sources and analyze your financial health.</li>
-            <li><strong>Financial Reports:</strong> Generate detailed reports to review your financial activities over time.</li>
-        </ul>
+    <!-- Charts Section -->
+    <section class="charts">
+        <div class="chart-wrapper">
+            <h3>Expense Breakdown</h3>
+            <canvas id="expenseChart"></canvas>
+        </div>
+
+        <div class="chart-wrapper">
+            <h3>Income vs. Expenses</h3>
+            <canvas id="incomeExpenseChart"></canvas>
+        </div>
+
+        <div class="chart-wrapper">
+            <h3>Budget Utilization</h3>
+            <canvas id="budgetChart"></canvas>
+        </div>
     </section>
 
-    <section class="tips">
-        <h2>Financial Management Tips</h2>
-        <article>
-            <h3>1. Set Clear Financial Goals</h3>
-            <p>Start by setting specific and realistic financial goals. Whether it's saving for a vacation, buying a house, or building an emergency fund, having clear goals will guide your financial decisions.</            </p>
-        </article>
-        <article>
-            <h3>2. Create a Budget</h3>
-            <p>Budgeting is the cornerstone of financial management. List all your income and expenses to see where your money is going. Adjust your spending habits to align with your financial goals.</p>
-        </article>
-        <article>
-            <h3>3. Track Your Spending</h3>
-            <p>Keep track of your spending to identify areas where you can cut back. Use our expense tracking feature to categorize your expenses and find opportunities to save money.</p>
-        </article>
-        <article>
-            <h3>4. Build an Emergency Fund</h3>
-            <p>An emergency fund is essential for unexpected expenses. Aim to save at least 3-6 months' worth of living expenses to protect yourself from financial setbacks.</p>
-        </article>
-        <article>
-            <h3>5. Invest Wisely</h3>
-            <p>Investing is a great way to grow your wealth over time. Research different investment options and choose those that align with your risk tolerance and financial goals.</p>
-        </article>
-    </section>
-
+    <!-- Call to Action Section -->
     <section class="cta">
-        <h2>Get Started</h2>
-        <p>Ready to take control of your finances? <a href="register.php">Register</a> now or <a href="login.php">login</a> to start managing your finances like a pro!</p>
+        <h2>Take Control of Your Finances</h2>
+        <p><a href="register.php">Register</a> or <a href="login.php">login</a> to start now!</p>
     </section>
 </div>
 
 <?php include('../templates/footer.php'); ?>
+
+<!-- Chart.js Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Sample data for charts
+    var expenseData = [300, 500, 200, 400];
+    var incomeData = [1500];
+    var budgetData = [1200];
+
+    // Expense Breakdown Pie Chart
+    var ctxExpense = document.getElementById('expenseChart').getContext('2d');
+    new Chart(ctxExpense, {
+        type: 'pie',
+        data: {
+            labels: ['Food', 'Rent', 'Utilities', 'Entertainment'],
+            datasets: [{
+                data: expenseData,
+                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0'],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                }
+            }
+        }
+    });
+
+    // Income vs. Expenses Bar Chart
+    var ctxIncomeExpense = document.getElementById('incomeExpenseChart').getContext('2d');
+    new Chart(ctxIncomeExpense, {
+        type: 'bar',
+        data: {
+            labels: ['Income', 'Expenses'],
+            datasets: [{
+                label: 'Amount',
+                data: [incomeData[0], expenseData.reduce((a, b) => a + b, 0)],
+                backgroundColor: ['#36a2eb', '#ff6384']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                }
+            }
+        }
+    });
+
+    // Budget Utilization Line Chart
+    var ctxBudget = document.getElementById('budgetChart').getContext('2d');
+    new Chart(ctxBudget, {
+        type: 'line',
+        data: {
+            labels: ['Budget', 'Expenses'],
+            datasets: [{
+                label: 'Amount',
+                data: [budgetData[0], expenseData.reduce((a, b) => a + b, 0)],
+                borderColor: '#ffce56',
+                fill: false,
+                tension: 0.1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

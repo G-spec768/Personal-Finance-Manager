@@ -31,4 +31,38 @@ CREATE TABLE transactions (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+-- User profiles
+CREATE TABLE user_profiles (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    phone VARCHAR(20),
+    address TEXT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+-- User Settings
+CREATE TABLE user_settings (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    email_notifications BOOLEAN DEFAULT TRUE,
+    sms_notifications BOOLEAN DEFAULT FALSE,
+    theme ENUM('light', 'dark') DEFAULT 'light',
+    language VARCHAR(10) DEFAULT 'en',
+    currency VARCHAR(10) DEFAULT 'USD',
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Saving Goals
+CREATE TABLE savings_goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    goal_name VARCHAR(255) NOT NULL,
+    goal_amount DECIMAL(10, 2) NOT NULL,
+    current_amount DECIMAL(10, 2) DEFAULT 0,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 
