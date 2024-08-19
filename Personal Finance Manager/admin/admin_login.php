@@ -3,7 +3,7 @@
 session_start();
 
 // Include database connection
-include('../config/db_connect.php');
+include('../src/config.php');
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password'];
 
     // Fetch admin from the database
-    $sql = "SELECT id, password FROM admins WHERE username = ?";
+    $sql = "SELECT admin_id, password FROM admins WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $username);
     $stmt->execute();

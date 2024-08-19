@@ -2,7 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: #fcfbfb;
     margin: 0;
     padding: 0;
     display: flex;
@@ -16,6 +16,97 @@ header {
     padding: 20px 0;
     text-align: center;
 }
+
+
+nav {
+    width: 100%;
+    text-align: center; 
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block; 
+    margin: 0 15px; 
+}
+
+nav ul li a {
+    text-decoration: none; 
+    color: #ffffff; 
+    font-size: 1.1rem; 
+    padding: 10px 15px; 
+    transition: background-color 0.3s ease, color 0.3s ease; 
+    border-radius: 5px; 
+}
+
+nav ul li a:hover {
+    background-color: #555; 
+    color: #ffffff; 
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    nav ul {
+        display: block; 
+        text-align: left; 
+        padding: 10px 0;
+    }
+
+    nav ul li {
+        display: block; 
+        margin: 10px 0; 
+    }
+
+    nav ul li a {
+        display: block; 
+        padding: 12px; 
+    }
+}
+
+/* Style the checkbox container */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* Hide the default checkbox */
+.checkbox-container input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom checkbox */
+.checkbox-container label::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #007BFF; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    margin-right: 10px;
+    vertical-align: middle;
+    background-color: #fff;
+}
+
+/* Checked state for the custom checkbox */
+.checkbox-container input[type="checkbox"]:checked + label::before {
+    background-color: #007BFF; /* Background color when checked */
+    border-color: #007BFF;
+}
+
+/* Add a checkmark to the custom checkbox when checked */
+.checkbox-container input[type="checkbox"]:checked + label::after {
+    content: "\2713"; /* Unicode for checkmark */
+    display: block;
+    color: #fff; /* Checkmark color */
+    position: relative;
+    left: 6px;
+    top: -16px;
+    font-size: 16px;
+}
+
 
 footer {
     background-color: #004080; /* Dark blue */
@@ -128,16 +219,6 @@ header, footer {
 .tips article p {
     margin: 0;
 }
-
-/* .cta a {
-    color: #004080; 
-    font-weight: bold;
-    text-decoration: none;
-}
-
-.cta a:hover {
-    text-decoration: underline;
-} */
 
 .container {
     text-align: center;

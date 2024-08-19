@@ -10,6 +10,20 @@ if (!isset($_SESSION['user_id'])) {
 // Include database connection
 include('../src/config.php');
 
+// Handle form submission for adding transactions
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_transaction'])) {
+    $date = $_POST['date'];
+    $description = $_POST['description'];
+    $amount = $_POST['amount'];
+    $category = $_POST['category'];
+    
+    // Insert the new transaction into the database
+    $sql = "INSERT INTO transactions (user_id, date, description, amount, category) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("issds", $_SESSION['user_id'], $date, $description, $amount, $category);
+    $stmt->execute();
+}
+
 // Fetch transactions for the logged-in user
 $sql = "SELECT * FROM transactions WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
@@ -32,6 +46,27 @@ $transactions = $result->fetch_all(MYSQLI_ASSOC);
 <div class="dashboard-container">
     <h1>Your Transactions</h1>
 
+    <!-- Form for adding a new transaction -->
+    <form id="transaction-form">
+        <fieldset>
+            <legend>Add New Transaction</legend>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+            
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+            
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" step="0.01" required>
+            
+            <label for="category">Category:</label>
+            <input type="text" id="category" name="category" required>
+            
+            <input type="submit" value="Add Transaction">
+        </fieldset>
+    </form>
+
+    <!-- Display transactions -->
     <table id="transactions-table">
         <thead>
             <tr>
@@ -55,5 +90,6 @@ $transactions = $result->fetch_all(MYSQLI_ASSOC);
 </div>
 
 <?php include('../templates/footer.php'); ?>
+<script src="transactions.js"></script>
 </body>
 </html>

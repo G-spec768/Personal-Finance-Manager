@@ -9,10 +9,10 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // Include database connection
-include('../config/db_connect.php');
+include('../src/config.php');
 
 // Fetch all users
-$sql = "SELECT id, username, email, created_at FROM users ORDER BY created_at DESC";
+$sql = "SELECT user_id, username, email, created_at FROM users ORDER BY created_at DESC";
 $result = $conn->query($sql);
 $users = $result->fetch_all(MYSQLI_ASSOC);
 ?>
