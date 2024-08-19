@@ -51,7 +51,9 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #444; /* Darker gray for hover effect */
+    background-color: #444;
+    text-decoration: none;
+    color: #dc143c;
 }
 
 main {

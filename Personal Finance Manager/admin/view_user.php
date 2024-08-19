@@ -9,11 +9,11 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // Include database connection
-include('../config/db_connect.php');
+include('../src/config.php');
 
 // Fetch user details
-$user_id = $_GET['id'];
-$sql = "SELECT username, email, created_at FROM users WHERE id = ?";
+$user_id = $_GET['user_id'];
+$sql = "SELECT username, email, created_at FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();

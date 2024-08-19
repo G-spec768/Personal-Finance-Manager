@@ -2,7 +2,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "@Enrique12";
 $dbname = "finance_management";
 
 // Create connection
