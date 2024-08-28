@@ -1,4 +1,4 @@
-<?php include('../templates/header.php'); ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,12 +9,12 @@
     <title>Personal Finance Management System</title>
 </head>
 <body>
+<?php include('../templates/header.php'); ?>
 
 <div class="container">
     <h1>Welcome to Your Finance Dashboard</h1>
     <p>Track and manage your finances with ease. See how you're doing at a glance.</p>
 
-    <!-- Charts Section -->
     <section class="charts">
         <div class="chart-wrapper">
             <h3>Expense Breakdown</h3>
@@ -32,7 +32,7 @@
         </div>
     </section>
 
-    <!-- Call to Action Section -->
+
     <section class="cta">
         <h2>Take Control of Your Finances</h2>
         <p><a href="register.php">Register</a> or <a href="login.php">login</a> to start now!</p>

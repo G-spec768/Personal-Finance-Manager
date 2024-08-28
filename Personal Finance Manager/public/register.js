@@ -54,32 +54,3 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-    const registerForm = document.querySelector('form');
-    const submitButton = registerForm.querySelector('input[type="submit"]');
-    const termsCheckbox = document.createElement('input');
-    const termsLabel = document.createElement('label');
-
-    // Create the Terms and Conditions checkbox
-    termsCheckbox.type = 'checkbox';
-    termsCheckbox.id = 'terms';
-    termsCheckbox.style.marginRight = '5px';
-
-    // Create the label for the checkbox
-    termsLabel.setAttribute('for', 'terms');
-    termsLabel.textContent = 'I agree to the Terms and Conditions';
-
-    // Insert the checkbox and label before the submit button
-    submitButton.insertAdjacentElement('beforebegin', termsCheckbox);
-    submitButton.insertAdjacentElement('beforebegin', termsLabel);
-    submitButton.insertAdjacentElement('beforebegin', document.createElement('br'));
-    submitButton.insertAdjacentElement('beforebegin', document.createElement('br'));
-
-    // Initially disable the submit button
-    submitButton.disabled = true;
-
-    // Enable/disable the submit button based on the checkbox state
-    termsCheckbox.addEventListener('change', function () {
-        submitButton.disabled = !termsCheckbox.checked;
-    });
-});

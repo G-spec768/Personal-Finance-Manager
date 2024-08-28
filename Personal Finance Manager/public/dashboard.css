@@ -1,18 +1,18 @@
 /* Dashboard Container */
 .dashboard-container {
-    width: 80%;  /* Updated to cover 80% of the page width */
+    width: 80%;  
     margin: 0 auto;
     padding: 20px;
-    background-color: #000; /* Black background for elements */
+    background-color: #fff; 
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px 6px;
     text-align: center;
-    color: #fff; /* White font color */
+    color: #000; 
 }
 
 .dashboard-container h1,
 .dashboard-container p {
-    color: #fff; /* White font color */
+    color: #000; 
 }
 
 .dashboard-container form {
@@ -23,7 +23,7 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #fff; /* White font color */
+    color: #000; /* White font color */
 }
 
 .dashboard-container input[type="number"] {
@@ -32,14 +32,14 @@
     margin-bottom: 15px;
     border: 1px solid #fff; /* White border */
     border-radius: 5px;
-    background-color: #000; /* Black input field */
-    color: #fff; /* White text color inside input */
+    background-color: #fff; /* Black input field */
+    color: #000; /* White text color inside input */
     box-sizing: border-box;
 }
 
 .dashboard-container input[type="submit"] {
-    background-color: #004080; /* Dark blue */
-    color: #fff; /* White text */
+    background-color: #191970; 
+    color: #000; 
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -49,25 +49,24 @@
 }
 
 .dashboard-container input[type="submit"]:hover {
-    background-color: #00264d; /* Darker blue */
+    background-color: #dc143c; 
 }
 
-/* Chart Container */
+
 .chart-container {
     margin-top: 30px;
     position: relative;
     height: 400px;
     width: 100%;
-    color: #fff; /* White text color */
+    color: #000; 
 }
 
-/* Add these styles to the existing dashboard.css */
 
-/* Header styles */
 header {
-    background-color: #000; /* Black background for the header */
+    background-color: #000; 
     padding: 10px 0;
     margin-bottom: 20px;
+    height: 4em;
 }
 
 nav ul {
@@ -82,11 +81,12 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff; /* White font color for the links */
+    color: #fff; 
     text-decoration: none;
     font-weight: bold;
 }
 
 nav ul li a:hover {
-    color: #ccc; /* Light grey color when hovering over the links */
+    color: mediumspringgreen;
+    text-decoration: none; 
 }
