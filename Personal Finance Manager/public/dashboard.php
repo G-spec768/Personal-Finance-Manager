@@ -13,7 +13,7 @@ if (!isset($_SESSION['user_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
-    <title>Dashboard</title>
+    <title>Personal Finance Management Dashboard</title>
 </head>
 <body>
 <?php include('../templates/user_header.php'); ?>

@@ -1,5 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Finance Manager Register</title>
+</head>
+<body>
 <?php include('../templates/header.php'); ?>
-
 <h2>Register</h2>
 <form action="../src/register_user.php" method="post">
     <label for="username">Username:</label><br>
@@ -8,13 +15,12 @@
     <label for="password">Password:</label><br>
     <input type="password" id="password" name="password" required><br><br>
 
-    <!-- Terms and Conditions Checkbox -->
-    <input type="checkbox" id="terms" name="terms">
-    <label for="terms">I agree to the Terms and Conditions</label><br><br>
-
-    <input type="submit" value="Register" disabled> <!-- Initially disabled -->
+    <input type="submit" value="Register"> 
 </form>
 
-<script src="register.js"></script> <!-- Link to your JavaScript file -->
+<script src="register.js"></script> 
 
 <?php include('../templates/footer.php'); ?>
+ 
+</body>
+</html>
