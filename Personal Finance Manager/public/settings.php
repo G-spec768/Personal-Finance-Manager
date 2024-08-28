@@ -17,6 +17,12 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $settings = $stmt->get_result()->fetch_assoc();
+
+// Set default values if any setting is null
+$notifications = isset($settings['notifications']) ? explode(',', $settings['notifications']) : [];
+$theme = $settings['theme'] ?? 'light'; // default to 'light' if null
+$language = $settings['language'] ?? 'en'; // default to 'en' if null
+$currency = $settings['currency'] ?? 'usd'; // default to 'usd' if null
 ?>
 
 <!DOCTYPE html>
@@ -36,11 +42,11 @@ $settings = $stmt->get_result()->fetch_assoc();
         <fieldset>
             <legend>Notification Preferences</legend>
             <label>
-                <input type="checkbox" name="notifications[]" value="email" <?php echo in_array('email', explode(',', $settings['notifications'])) ? 'checked' : ''; ?>>
+                <input type="checkbox" name="notifications[]" value="email" <?php echo in_array('email', $notifications) ? 'checked' : ''; ?>>
                 Email Notifications
             </label>
             <label>
-                <input type="checkbox" name="notifications[]" value="sms" <?php echo in_array('sms', explode(',', $settings['notifications'])) ? 'checked' : ''; ?>>
+                <input type="checkbox" name="notifications[]" value="sms" <?php echo in_array('sms', $notifications) ? 'checked' : ''; ?>>
                 SMS Notifications
             </label>
         </fieldset>
@@ -48,11 +54,11 @@ $settings = $stmt->get_result()->fetch_assoc();
         <fieldset>
             <legend>Theme Settings</legend>
             <label>
-                <input type="radio" name="theme" value="light" <?php echo $settings['theme'] === 'light' ? 'checked' : ''; ?>>
+                <input type="radio" name="theme" value="light" <?php echo $theme === 'light' ? 'checked' : ''; ?>>
                 Light Mode
             </label>
             <label>
-                <input type="radio" name="theme" value="dark" <?php echo $settings['theme'] === 'dark' ? 'checked' : ''; ?>>
+                <input type="radio" name="theme" value="dark" <?php echo $theme === 'dark' ? 'checked' : ''; ?>>
                 Dark Mode
             </label>
         </fieldset>
@@ -61,15 +67,15 @@ $settings = $stmt->get_result()->fetch_assoc();
             <legend>Language & Currency</legend>
             <label for="language">Language:</label>
             <select id="language" name="language">
-                <option value="en" <?php echo $settings['language'] === 'en' ? 'selected' : ''; ?>>English</option>
-                <option value="es" <?php echo $settings['language'] === 'es' ? 'selected' : ''; ?>>Spanish</option>
+                <option value="en" <?php echo $language === 'en' ? 'selected' : ''; ?>>English</option>
+                <option value="es" <?php echo $language === 'es' ? 'selected' : ''; ?>>Spanish</option>
                 <!-- Add more languages as needed -->
             </select>
 
             <label for="currency">Currency:</label>
             <select id="currency" name="currency">
-                <option value="usd" <?php echo $settings['currency'] === 'usd' ? 'selected' : ''; ?>>USD</option>
-                <option value="eur" <?php echo $settings['currency'] === 'eur' ? 'selected' : ''; ?>>EUR</option>
+                <option value="usd" <?php echo $currency === 'usd' ? 'selected' : ''; ?>>USD</option>
+                <option value="eur" <?php echo $currency === 'eur' ? 'selected' : ''; ?>>EUR</option>
                 <!-- Add more currencies as needed -->
             </select>
         </fieldset>

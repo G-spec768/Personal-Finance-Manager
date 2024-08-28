@@ -1,12 +1,26 @@
 /* Savings Goals Page Styles */
 .savings-container {
-    max-width: 800px;
+    width: 60%;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 4px ;
     text-align: center;
+}
+
+form {
+    width: 400px;
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 4px 7px 6px;
+    display: block;
+    align-items: center;
+    /* justify-content: space-between; */
+    
 }
 
 .savings-container h1 {
@@ -54,7 +68,7 @@
 }
 
 #add-goal-form input[type="submit"]:hover {
-    background-color: #00264d; /* Darker blue */
+    background-color: crimson; /* Darker blue */
 }
 
 .goals-list {
@@ -84,7 +98,7 @@
 }
 
 .progress-bar {
-    background-color: #004080; /* Dark blue */
+    background-color: green; /* Dark blue */
     height: 100%;
     transition: width 0.3s;
 }

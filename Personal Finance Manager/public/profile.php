@@ -10,14 +10,17 @@ if (!isset($_SESSION['user_id'])) {
 // Include database connection
 include('../src/config.php');
 
-// Fetch user details
-$user_id = $_SESSION['user_id'];
-$sql = "SELECT username, email FROM users WHERE id = ?";
+// Fetch user details using the correct column name
+$user_id = $_SESSION['user_id']; 
+$sql = "SELECT username, email FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $user = $stmt->get_result()->fetch_assoc();
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

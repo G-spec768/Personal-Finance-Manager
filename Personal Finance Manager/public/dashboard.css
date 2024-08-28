@@ -1,18 +1,18 @@
 /* Dashboard Container */
 .dashboard-container {
-    width: 80%;  
+    width: 80%;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff; 
+    background-color: #fff; /* White background color */
     border-radius: 5px;
-    box-shadow: 0 2px 4px 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
-    color: #000; 
+    color: #000; /* Black font color */
 }
 
 .dashboard-container h1,
 .dashboard-container p {
-    color: #000; 
+    color: #000; /* Black font color */
 }
 
 .dashboard-container form {
@@ -23,23 +23,23 @@
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #000; /* White font color */
+    color: #000; /* Black font color */
 }
 
 .dashboard-container input[type="number"] {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
-    border: 1px solid #fff; /* White border */
+    border: 1px solid #000; /* Black border */
     border-radius: 5px;
-    background-color: #fff; /* Black input field */
-    color: #000; /* White text color inside input */
+    background-color: #fff; /* White input field background */
+    color: #000; /* Black text color inside input */
     box-sizing: border-box;
 }
 
 .dashboard-container input[type="submit"] {
-    background-color: #191970; 
-    color: #000; 
+    background-color: #191970; /* Navy blue background */
+    color: #fff; /* White font color */
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
@@ -49,21 +49,19 @@
 }
 
 .dashboard-container input[type="submit"]:hover {
-    background-color: #dc143c; 
+    background-color: #dc143c; /* Crimson on hover */
 }
-
 
 .chart-container {
     margin-top: 30px;
     position: relative;
     height: 400px;
     width: 100%;
-    color: #000; 
+    color: #000; /* Black font color */
 }
 
-
 header {
-    background-color: #000; 
+    background-color: #000; /* Black background */
     padding: 10px 0;
     margin-bottom: 20px;
     height: 4em;
@@ -81,12 +79,12 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff; 
+    color: #fff; /* White font color */
     text-decoration: none;
     font-weight: bold;
 }
 
 nav ul li a:hover {
     color: mediumspringgreen;
-    text-decoration: none; 
+    text-decoration: none;
 }

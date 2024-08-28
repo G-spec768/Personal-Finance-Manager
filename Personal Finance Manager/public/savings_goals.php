@@ -67,8 +67,8 @@ $savings_goals = $result->fetch_all(MYSQLI_ASSOC);
             <?php foreach ($savings_goals as $goal): ?>
                 <div class="goal-item">
                     <h3><?php echo htmlspecialchars($goal['goal_name']); ?></h3>
-                    <p>Goal Amount: <?php echo htmlspecialchars($goal['goal_amount']); ?> USD</p>
-                    <p>Current Amount: <?php echo htmlspecialchars($goal['current_amount']); ?> USD</p>
+                    <p>Goal Amount: <?php echo htmlspecialchars($goal['goal_amount']); ?> KSh</p>
+                    <p>Current Amount: <?php echo htmlspecialchars($goal['current_amount']); ?> Ksh</p>
                     <div class="progress-container">
                         <div class="progress-bar" style="width: <?php echo ($goal['current_amount'] / $goal['goal_amount']) * 100; ?>%;"></div>
                     </div>
