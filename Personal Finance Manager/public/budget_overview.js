@@ -13,17 +13,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelDeleteButton = document.getElementById('cancel-delete');
     
     // Open Create Budget Modal
-    openCreateModalButton.onclick = function() {
-        createBudgetModal.style.display = 'block';
-    };
+    openCreateModalButton.addEventListener('click', function() {
+        createBudgetModal.style.display = 'none';
+    });
 
     // Close Create Budget Modal
-    closeCreateModalButton.onclick = function() {
+    closeCreateModalButton.addEventListener('click', function() {
         createBudgetModal.style.display = 'none';
-    };
+    });
 
     // Open Edit Budget Modal
-    function openEditModal(id, category, limit) {
+    window.openEditModal = function(id, category, limit) {
         document.getElementById('edit-id').value = id;
         document.getElementById('edit-category').value = category;
         document.getElementById('edit-limit').value = limit;
@@ -31,49 +31,54 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Close Edit Budget Modal
-    closeEditModalButton.onclick = function() {
+    closeEditModalButton.addEventListener('click', function() {
         editBudgetModal.style.display = 'none';
-    };
+    });
 
     // Open Delete Budget Modal
-    function openDeleteModal(id) {
+    window.openDeleteModal = function(id) {
         document.getElementById('delete-id').value = id;
         deleteBudgetModal.style.display = 'block';
     }
 
     // Close Delete Budget Modal
-    closeDeleteModalButton.onclick = function() {
+    closeDeleteModalButton.addEventListener('click', function() {
         deleteBudgetModal.style.display = 'none';
-    };
+    });
 
     // Confirm Delete
-    confirmDeleteButton.onclick = function() {
+    confirmDeleteButton.addEventListener('click', function() {
         const form = document.getElementById('delete-budget-form');
         form.submit(); // Submit the delete form
-    };
+    });
 
     // Cancel Delete
-    cancelDeleteButton.onclick = function() {
+    cancelDeleteButton.addEventListener('click', function() {
         deleteBudgetModal.style.display = 'none';
-    };
+    });
 
     // Handle Form Submissions
-    document.getElementById('create-budget-form').onsubmit = function(event) {
+    document.getElementById('create-budget-form').addEventListener('submit', function(event) {
         event.preventDefault();
         // Add AJAX code here to handle form submission
         updateBudgetTable(); // Update table and chart after adding a new budget
-    };
+    });
 
-    document.getElementById('edit-budget-form').onsubmit = function(event) {
+    document.getElementById('edit-budget-form').addEventListener('submit', function(event) {
         event.preventDefault();
         // Add AJAX code here to handle form submission
         updateBudgetTable(); // Update table and chart after editing a budget
-    };
+    });
 
     // Fetch and display budget data
     function updateBudgetTable() {
-        fetch('path/to/your/api/endpoint') // Replace with your API endpoint
-            .then(response => response.json())
+        fetch('/api/budgets') // Ensure this is a correct URL returning JSON data.
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 // Populate the table and chart with data
                 populateTable(data);

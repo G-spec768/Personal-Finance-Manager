@@ -40,6 +40,7 @@
     max-width: 400px;
     padding: 10px;
     margin-bottom: 10px;
+    margin-top: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -49,10 +50,11 @@
     background-color: #004080;
     color: #fff;
     cursor: pointer;
+    /* margin-top: 10px; */
 }
 
 .transactions-container input[type="submit"]:hover {
-    background-color: #003366;
+    background-color: crimson;
 }
 
 #transactions-table {
