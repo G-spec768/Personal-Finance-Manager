@@ -88,3 +88,70 @@ nav ul li a:hover {
     color: mediumspringgreen;
     text-decoration: none;
 }
+
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.dashboard-container {
+    margin: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.balance-summary {
+    padding: 10px;
+    background: #e9f7ef;
+    border-left: 5px solid #28a745;
+    margin-bottom: 10px;
+}
+
+.budget-alert {
+    padding: 10px;
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    margin-bottom: 10px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.progress-bar {
+    height: 20px;
+    background: #28a745;
+    border-radius: 5px;
+    text-align: center;
+    color: white;
+}
+
+button {
+    padding: 10px 20px;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background: #0056b3;
+}

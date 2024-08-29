@@ -1,43 +1,31 @@
-document.getElementById('finance-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-
-    // Get the values from the form
-    var income = parseFloat(document.getElementById('income').value);
-    var expenses = parseFloat(document.getElementById('expenses').value);
-    var budget = parseFloat(document.getElementById('budget').value);
-
-    // Create the chart data
-    var data = {
-        labels: ['Income', 'Expenses', 'Budget'],
+// Example of initializing the chart for the End of Month Overview
+const ctx = document.getElementById('spendingChart').getContext('2d');
+const spendingChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Rent', 'Groceries', 'Entertainment', 'Utilities', 'Savings'],
         datasets: [{
-            label: 'Financial Overview',
-            data: [income, expenses, budget],
-            backgroundColor: [
-                'rgba(54, 162, 235, 0.6)',
-                'rgba(255, 99, 132, 0.6)',
-                'rgba(75, 192, 192, 0.6)'
-            ],
-            borderColor: [
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 99, 132, 1)',
-                'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
+            label: 'Monthly Spending',
+            data: [1200, 800, 400, 600, 500],
+            backgroundColor: ['#007bff', '#28a745', '#ffc107', '#dc3545', '#6f42c1']
         }]
-    };
-
-    // Create the chart
-    var ctx = document.getElementById('financeChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
+    },
+    options: {
+        responsive: true,
+        scales: {
+            y: {
+                beginAtZero: true
             }
         }
-    });
+    }
 });
+
+function adjustBudget() {
+    alert("Redirecting to budget adjustment page...");
+    // Implementation of budget adjustment functionality
+}
+
+function setNewGoals() {
+    alert("Set your new goals for the upcoming month.");
+    // Implementation for setting new goals
+}

@@ -20,6 +20,16 @@ CREATE TABLE budget (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+CREATE TABLE budgets (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    category VARCHAR(255) NOT NULL,  -- e.g., Groceries, Utilities
+    amount DECIMAL(10, 2) NOT NULL,  -- Budget limit
+    spent DECIMAL(10, 2) NOT NULL DEFAULT 0.00,  -- Amount spent so far
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 
 -- Transactions Table
 CREATE TABLE transactions (
@@ -66,6 +76,17 @@ CREATE TABLE savings_goals (
     current_amount DECIMAL(10, 2) DEFAULT 0,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE goals (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    goal_name VARCHAR(255) NOT NULL,  -- e.g., "Vacation Fund"
+    goal_amount DECIMAL(10, 2) NOT NULL,  -- Total amount aimed to save
+    saved_amount DECIMAL(10, 2) NOT NULL DEFAULT 0.00,  -- Amount saved so far
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
 
 CREATE TABLE notifications (
     id INT AUTO_INCREMENT PRIMARY KEY,
