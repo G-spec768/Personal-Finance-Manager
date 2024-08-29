@@ -1,55 +1,40 @@
-<!-- admin/admin_login.php -->
 <?php
 session_start();
-
-// Include database connection
 include('../src/config.php');
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $username = $_POST['username'];
-    $password = $_POST['password'];
-
-    // Fetch admin from the database
-    $sql = "SELECT admin_id, password FROM admins WHERE username = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $stmt->store_result();
-
-    if ($stmt->num_rows > 0) {
-        $stmt->bind_result($admin_id, $hashed_password);
-        $stmt->fetch();
-
-        if (password_verify($password, $hashed_password)) {
-            $_SESSION['admin_id'] = $admin_id;
-            header('Location: admin_dashboard.php');
-            exit();
-        } else {
-            $error = "Invalid username or password.";
-        }
-    } else {
-        $error = "Invalid username or password.";
-    }
+    include('admin_auth.php'); // Process login credentials
 }
 ?>
 
-<?php include('../templates/admin_header.php'); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href="../public/combined_styles.css"> <!-- Link to combined styles -->
+</head>
+<body>
+    <?php include('../templates/admin_header.php'); ?> <!-- Include header -->
 
-<div class="admin-container">
-    <h1>Admin Login</h1>
-    <?php if (isset($error)): ?>
-        <p class="error"><?php echo htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <form method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    <div class="admin-container">
+        <h1>Admin Login</h1>
+        <?php if (isset($error)): ?>
+            <p class="error"><?php echo htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+        <form method="POST" action="admin_login.php">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
 
-        <input type="submit" value="Login">
-    </form>
-</div>
+            <input type="submit" name="login" value="Login">
+        </form>
+    </div>
 
-<?php include('../templates/admin_footer.php'); ?>
+    <?php include('../templates/admin_footer.php'); ?> <!-- Include footer -->
+</body>
+</html>
