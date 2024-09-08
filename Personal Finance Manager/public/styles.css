@@ -1,260 +1,186 @@
-/* styles.css */
-
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #fcfbfb;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Styling */
+header {
+    background-color: #000; /* Black background for header */
+    color: #fff; /* White text color */
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    width: 100%;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
-header {
-    background-color: #004080; /* Dark blue */
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
+header nav ul li {
+    margin-left: 20px;
 }
 
-
-nav {
-    width: 100%;
-    text-align: center; 
-}
-
-nav ul {
-    list-style-type: none;
-}
-
-nav ul li {
-    display: inline-block; 
-    margin: 0 15px; 
-}
-
-nav ul li a {
-    text-decoration: none; 
-    color: #ffffff; 
-    font-size: 1.1rem; 
-    padding: 10px 15px; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
-    border-radius: 5px; 
-}
-
-nav ul li a:hover {
-    background-color: #555; 
-    color: #ffffff; 
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    nav ul {
-        display: block; 
-        text-align: left; 
-        padding: 10px 0;
-    }
-
-    nav ul li {
-        display: block; 
-        margin: 10px 0; 
-    }
-
-    nav ul li a {
-        display: block; 
-        padding: 12px; 
-    }
-}
-
-/* Style the checkbox container */
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-
-/* Hide the default checkbox */
-.checkbox-container input[type="checkbox"] {
-    display: none;
-}
-
-/* Create a custom checkbox */
-.checkbox-container label::before {
-    content: "";
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    border: 2px solid #007BFF; /* Border color */
-    border-radius: 4px; /* Rounded corners */
-    margin-right: 10px;
-    vertical-align: middle;
-    background-color: #fff;
-}
-
-/* Checked state for the custom checkbox */
-.checkbox-container input[type="checkbox"]:checked + label::before {
-    background-color: #007BFF; /* Background color when checked */
-    border-color: #007BFF;
-}
-
-/* Add a checkmark to the custom checkbox when checked */
-.checkbox-container input[type="checkbox"]:checked + label::after {
-    content: "\2713"; /* Unicode for checkmark */
-    display: block;
-    color: #fff; /* Checkmark color */
-    position: relative;
-    left: 6px;
-    top: -16px;
-    font-size: 16px;
-}
-
-
-footer {
-    background-color: #004080; /* Dark blue */
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
-}
-
-main {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    flex-direction: column;
-}
-
-h1, h2 {
-    color: #333;
-}
-
-a {
-    color: #004080; /* Dark blue */
+header nav ul li a {
+    color: #fff; /* White text color for links */
     text-decoration: none;
-    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
 
-a:hover {
-    text-decoration: underline;
+header nav ul li a:hover {
+    background-color: #444;
+    color: #dc143c; /* Highlight color */
 }
 
-form {
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-width: 400px;
-    width: 100%; /* Ensure form takes full width of its container */
-    margin: 20px 0; /* Add margin to separate forms from other elements */
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-}
-
-input[type="submit"] {
-    background-color: #004080; /* Dark blue */
+/* Hero Section Styling */
+.hero {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../images/hero-bg.jpg') no-repeat center center/cover;
     color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%; /* Ensure button takes full width of its container */
-    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
-}
-
-input[type="submit"]:hover {
-    background-color: #00264d; /* Darker blue */
-}
-
-header, footer {
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container {
+    padding: 60px 20px;
     text-align: center;
-    margin-top: 50px;
 }
 
-.features, .tips, .cta {
-    margin-top: 30px;
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
 }
 
-.features h2, .tips h2, .cta h2 {
-    color: #333;
-    margin-bottom: 15px;
-}
-
-.features ul {
-    list-style-type: disc;
-    padding-left: 20px;
-}
-
-.features ul li {
-    margin-bottom: 10px;
-}
-
-.tips article {
+.hero h1 {
+    font-size: 2.5em;
     margin-bottom: 20px;
 }
 
-.tips article h3 {
-    margin-bottom: 5px;
-    color: #004080; /* Dark blue */
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 
-.tips article p {
-    margin: 0;
-}
-
-.container {
-    text-align: center;
-    padding: 20px;
-}
-
-.chart-wrapper {
-    width: 100%;
-    max-width: 600px;
-    margin: 20px auto;
-}
-
-h1 {
-    color: #fff; /* White text */
-}
-
-p {
-    color: #ccc; /* Light grey text */
-}
-
-.cta h2 {
-    margin-top: 40px;
+.btn-primary {
+    background-color: #dc143c;
     color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
 }
 
-.cta p {
-    margin-top: 10px;
-    font-size: 18px;
+.btn-primary:hover {
+    background-color: #c8102e;
 }
 
-.cta a {
-    color: #4bc0c0;
+/* Main Content Styling */
+main {
+    padding: 40px 20px;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #fff; /* White background for main content */
+    border-radius: 8px; /* Rounded corners for the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for elevation */
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+main h1 {
+    font-size: 2.5em;
+    color: #333; /* Dark text color for headings */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main h2 {
+    font-size: 2em;
+    color: #555; /* Slightly lighter text color for subheadings */
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+main p {
+    font-size: 1.1em;
+    color: #666; /* Lighter text color for paragraphs */
+    line-height: 1.6;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Button Styles */
+.btn-secondary {
+    background-color: #ddd;
+    color: #000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin: 0 10px;
+    display: inline-block;
+}
+
+.btn-secondary:hover {
+    background-color: #ccc;
+}
+
+/* Chart Wrapper Styles */
+.chart-wrapper {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    flex: 1;
+    margin: 0 10px;
+    text-align: center;
+}
+
+.chart-wrapper h3 {
+    margin-bottom: 20px;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #000; /* Black background for footer */
+    color: #fff; /* White text color */
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    position: relative;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #dc143c; /* Highlight color for links */
     text-decoration: none;
     font-weight: bold;
 }
 
-.cta a:hover {
-    color: #36a2eb;
+footer a:hover {
+    text-decoration: underline;
 }
