@@ -11,15 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 include('../src/config.php');
 $user_id = $_SESSION['user_id'];
 
-
-
 // Handle form submission for updating profile
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['update_profile'])) {
         // Update profile
         $username = $_POST['username'];
         $email = $_POST['email'];
-        $sql = "UPDATE users SET username = ?, email = ? WHERE id = ?";
+        $sql = "UPDATE users SET username = ?, email = ? WHERE user_id = ?";
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("ssi", $username, $email, $user_id);
         $stmt->execute();
@@ -49,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 // Fetch user profile
-$sql = "SELECT username, email FROM users WHERE id = ?";
+$sql = "SELECT username, email FROM users WHERE user_id = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
@@ -60,7 +58,7 @@ $sql = "SELECT notifications, theme, language, currency FROM user_settings WHERE
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$settings = $stmt->get_result()->fetch_assoc();
+$settings = $stmt->get_result()->fetch_assoc() ?: ['notifications' => '', 'theme' => 'light', 'language' => 'en', 'currency' => 'usd']; // Set defaults if settings are null
 
 // Fetch user notifications
 $sql = "SELECT * FROM notifications WHERE user_id = ? ORDER BY date ASC";
@@ -75,6 +73,10 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $reminders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Set a default theme if not already set
+$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
+
 ?>
 
 <!DOCTYPE html>
@@ -120,11 +122,11 @@ $reminders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <fieldset>
             <legend>Notification Preferences</legend>
             <label>
-                <input type="checkbox" name="notifications[]" value="email" <?php echo in_array('email', explode(',', $settings['notifications'])) ? 'checked' : ''; ?>>
+                <input type="checkbox" name="notifications[]" value="email" <?php echo in_array('email', explode(',', $settings['notifications'] ?? '')) ? 'checked' : ''; ?>>
                 Email Notifications
             </label>
             <label>
-                <input type="checkbox" name="notifications[]" value="sms" <?php echo in_array('sms', explode(',', $settings['notifications'])) ? 'checked' : ''; ?>>
+                <input type="checkbox" name="notifications[]" value="sms" <?php echo in_array('sms', explode(',', $settings['notifications'] ?? '')) ? 'checked' : ''; ?>>
                 SMS Notifications
             </label>
         </fieldset>
@@ -132,11 +134,11 @@ $reminders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
         <fieldset>
             <legend>Theme Settings</legend>
             <label>
-                <input type="radio" name="theme" value="light" <?php echo $settings['theme'] === 'light' ? 'checked' : ''; ?>>
+                <input type="radio" name="theme" value="light" <?php echo ($settings['theme'] ?? 'light') === 'light' ? 'checked' : ''; ?>>
                 Light Mode
             </label>
             <label>
-                <input type="radio" name="theme" value="dark" <?php echo $settings['theme'] === 'dark' ? 'checked' : ''; ?>>
+                <input type="radio" name="theme" value="dark" <?php echo ($settings['theme'] ?? 'light') === 'dark' ? 'checked' : ''; ?>>
                 Dark Mode
             </label>
 
@@ -148,22 +150,19 @@ $reminders = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
             </select>
         </fieldset>
 
-
-
-
         <fieldset>
             <legend>Language & Currency</legend>
             <label for="language">Language:</label>
             <select id="language" name="language">
-                <option value="en" <?php echo $settings['language'] === 'en' ? 'selected' : ''; ?>>English</option>
-                <option value="es" <?php echo $settings['language'] === 'es' ? 'selected' : ''; ?>>Spanish</option>
+                <option value="en" <?php echo ($settings['language'] ?? 'en') === 'en' ? 'selected' : ''; ?>>English</option>
+                <option value="es" <?php echo ($settings['language'] ?? 'en') === 'es' ? 'selected' : ''; ?>>Spanish</option>
                 <!-- Add more languages as needed -->
             </select>
 
             <label for="currency">Currency:</label>
             <select id="currency" name="currency">
-                <option value="usd" <?php echo $settings['currency'] === 'usd' ? 'selected' : ''; ?>>USD</option>
-                <option value="eur" <?php echo $settings['currency'] === 'eur' ? 'selected' : ''; ?>>EUR</option>
+                <option value="usd" <?php echo ($settings['currency'] ?? 'usd') === 'usd' ? 'selected' : ''; ?>>USD</option>
+                <option value="eur" <?php echo ($settings['currency'] ?? 'usd') === 'eur' ? 'selected' : ''; ?>>EUR</option>
                 <!-- Add more currencies as needed -->
             </select>
         </fieldset>

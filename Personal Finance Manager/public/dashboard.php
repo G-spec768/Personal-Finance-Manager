@@ -36,18 +36,22 @@ $stmt->execute();
 $upcoming_bill = $stmt->get_result()->fetch_assoc();
 
 // Fetch budget alerts
-$budget_query = "SELECT category, amount, spent FROM budgets WHERE user_id = ?";
+$budget_query = "SELECT category, amount, spent FROM budget WHERE user_id = ?";
 $stmt = $conn->prepare($budget_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $budgets = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
 // Fetch savings goal progress
-$goal_query = "SELECT goal_name, goal_amount, saved_amount FROM goals WHERE user_id = ?";
+$goal_query = "SELECT goal_name, goal_amount, saved_amount FROM savings_goals WHERE user_id = ?";
 $stmt = $conn->prepare($goal_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $goals = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+
+// Set a default theme if not already set
+$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
+
 
 $conn->close();
 ?>
@@ -63,6 +67,7 @@ $conn->close();
 </head>
 
 <body>
+    
     <?php include('../templates/user_header.php'); ?>
 
     <div class="dashboard-container">

@@ -7,6 +7,10 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// Set a default theme if not already set
+$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
+
+
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['confirm'])) {
