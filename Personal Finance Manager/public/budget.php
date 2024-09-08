@@ -30,6 +30,10 @@ $stmt->bind_param("i", $_SESSION['user_id']);
 $stmt->execute();
 $result = $stmt->get_result();
 $budget_items = $result->fetch_all(MYSQLI_ASSOC);
+
+// Set a default theme if not already set
+$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
+
 ?>
 
 <!DOCTYPE html>

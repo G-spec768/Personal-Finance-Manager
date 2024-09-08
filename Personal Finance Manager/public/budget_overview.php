@@ -2,6 +2,10 @@
 // Database connection
 include('../src/config.php');
 
+// Set a default theme if not already set
+$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
+
+
 // Fetch data from the 'budgets' table
 $sql = "SELECT * FROM budget";
 $result = $conn->query($sql);

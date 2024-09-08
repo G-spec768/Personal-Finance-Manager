@@ -1,4 +1,4 @@
-/* styles.css */
+/* user_header.css */
 
 body {
     font-family: Arial, sans-serif;
@@ -13,10 +13,10 @@ body {
 header {
     background-color: #000; /* Black for header background */
     color: #fff; /* White text color */
-    padding: 20px 0;
+    padding: 10px 0; /* Adjusted padding */
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 4em;
+    height: 60px; /* Adjusted height */
 }
 
 header .container {
@@ -26,10 +26,6 @@ header .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-header h1 {
-    margin: 0;
 }
 
 header nav ul {
@@ -55,6 +51,16 @@ header nav ul li a:hover {
     background-color: #444;
     text-decoration: none;
     color: #dc143c;
+}
+
+.theme-switcher {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.theme-switcher label {
+    margin-right: 10px;
 }
 
 main {
