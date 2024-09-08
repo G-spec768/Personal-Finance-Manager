@@ -26,6 +26,7 @@ header .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    box-sizing: border-box;
 }
 
 header nav ul {
@@ -33,24 +34,24 @@ header nav ul {
     margin: 0;
     padding: 0;
     display: flex;
+    flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 header nav ul li {
-    margin-left: 20px;
+    margin: 0 10px; /* Adjusted margin */
 }
 
 header nav ul li a {
     color: #fff; /* White text color for links */
     text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    padding: 10px 15px; /* Increased padding for better click area */
+    border-radius: 5px; /* More rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header nav ul li a:hover {
     background-color: #444;
-    text-decoration: none;
-    color: #dc143c;
+    color: #dc143c; /* Highlight color on hover */
 }
 
 .theme-switcher {

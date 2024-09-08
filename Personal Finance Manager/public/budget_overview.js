@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Open Create Budget Modal
     openCreateModalButton.addEventListener('click', function() {
-        createBudgetModal.style.display = 'none';
+        createBudgetModal.style.display = 'block';
     });
 
     // Close Create Budget Modal
@@ -60,14 +60,32 @@ document.addEventListener('DOMContentLoaded', function() {
     // Handle Form Submissions
     document.getElementById('create-budget-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        // Add AJAX code here to handle form submission
-        updateBudgetTable(); // Update table and chart after adding a new budget
+        const formData = new FormData(this);
+        fetch('/api/create-budget', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(() => {
+            updateBudgetTable(); // Update table and chart after adding a new budget
+            createBudgetModal.style.display = 'none'; // Close the modal
+        })
+        .catch(error => console.error('Error creating budget:', error));
     });
 
     document.getElementById('edit-budget-form').addEventListener('submit', function(event) {
         event.preventDefault();
-        // Add AJAX code here to handle form submission
-        updateBudgetTable(); // Update table and chart after editing a budget
+        const formData = new FormData(this);
+        fetch('/api/edit-budget', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(() => {
+            updateBudgetTable(); // Update table and chart after editing a budget
+            editBudgetModal.style.display = 'none'; // Close the modal
+        })
+        .catch(error => console.error('Error editing budget:', error));
     });
 
     // Fetch and display budget data

@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Collect form data
         const formData = new FormData(form);
+        formData.append('add_transaction', true); // Indicate that it's an add transaction request
 
         // Send data to the server via AJAX
         fetch('transactions.php', {
@@ -38,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.text())
         .then(data => {
-            // Parse the response if needed
-            if (data.includes('Success')) {
+            // Handle response
+            if (data === 'Success') {
                 // Reload the transactions table
                 fetchTransactions();
                 form.reset();
             } else {
-                alert('Failed to add transaction.');
+                alert(data); // Display error message from PHP
             }
         })
         .catch(error => {
@@ -68,4 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
     }
+
+    // Initial fetch to load transactions
+    fetchTransactions();
 });
