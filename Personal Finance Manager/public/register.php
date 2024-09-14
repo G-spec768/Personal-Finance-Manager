@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Finance Manager Register</title>
+    <link rel="stylesheet" href="auth_styles.css"> <!-- Include the stylesheet -->
 </head>
 <body>
 <?php include('../templates/header.php'); ?>
@@ -21,6 +22,5 @@
 <script src="register.js"></script> 
 
 <?php include('../templates/footer.php'); ?>
- 
 </body>
 </html>

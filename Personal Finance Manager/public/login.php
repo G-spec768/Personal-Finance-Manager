@@ -1,4 +1,3 @@
-<!-- public/login.php -->
 <?php
 session_start();
 
@@ -46,9 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <?php include('../templates/header.php'); ?>
 
+<link rel="stylesheet" href="auth_styles.css">
+
 <h2>Login</h2>
 <?php if (isset($error)): ?>
-    <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+    <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
 <?php endif; ?>
 <form action="login.php" method="post">
     <label for="username">Username:</label><br>
