@@ -31,7 +31,7 @@ $conn->close();
 </head>
 <body>
     <?php include('../templates/user_header.php'); ?>
-    
+    <div class="dashboard-container">
     <h2>Budget Overview</h2>
 
     <!-- Budget Table -->
@@ -94,6 +94,7 @@ $conn->close();
                 <button type="button" id="cancel-delete">Cancel</button>
             </form>
         </div>
+    </div>
     </div>
 
     <?php include('../templates/footer.php'); ?>
