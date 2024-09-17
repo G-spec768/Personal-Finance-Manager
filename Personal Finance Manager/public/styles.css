@@ -1,68 +1,58 @@
 /* styles.css */
 
-
+/* Header Styling */
 header {
-    background-color: #004080; /* Dark blue */
-    color: #fff;
+    background-color: #000; /* Black background for header */
+    color: #fff; /* White text color */
     padding: 20px 0;
-    text-align: center;
-}
-
-
-nav {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
     width: 100%;
-    text-align: center; 
 }
 
-nav ul {
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+header nav ul {
     list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
 }
 
-nav ul li {
-    display: inline-block; 
-    margin: 0 15px; 
+header nav ul li {
+    margin-left: 20px;
 }
 
-nav ul li a {
-    text-decoration: none; 
-    color: #ffffff; 
-    font-size: 1.1rem; 
-    padding: 10px 15px; 
-    transition: background-color 0.3s ease, color 0.3s ease; 
-    border-radius: 5px; 
+header nav ul li a {
+    color: #fff; /* White text color for links */
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
-
-nav ul li a:hover {
-    background-color: #555; 
-    color: #ffffff; 
-}
-
-/* Mobile Responsive Styles */
-@media (max-width: 768px) {
-    nav ul {
-        display: block; 
-        text-align: left; 
-        padding: 10px 0;
-    }
-
-    nav ul li {
-        display: block; 
-        margin: 10px 0; 
-    }
-
-    nav ul li a {
-        display: block; 
-        padding: 12px; 
-    }
-}
-
 
 footer {
     background-color: #004080; /* Dark blue */
     color: #fff;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: auto;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    display: inline-block;
 }
 
-
+.btn-primary:hover {
+    background-color: #c8102e;
+}

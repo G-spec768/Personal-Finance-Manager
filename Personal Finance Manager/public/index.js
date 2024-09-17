@@ -1,76 +1,69 @@
+
     // Sample data for charts
     var expenseData = [300, 500, 200, 400];
     var incomeData = [15000];
     var budgetData = [1300];
 
-    // Expense Breakdown Pie Chart
-    var ctxExpense = document.getElementById('expenseChart').getContext('2d');
-    new Chart(ctxExpense, {
+document.addEventListener('DOMContentLoaded', function() {
+    var ctx1 = document.getElementById('expenseChart').getContext('2d');
+    var expenseChart = new Chart(ctx1, {
         type: 'pie',
         data: {
-            labels: ['Food', 'Rent', 'Utilities', 'Entertainment'],
+            labels: ['Rent', 'Utilities', 'Food', 'Entertainment'],
             datasets: [{
-                data: expenseData,
-                backgroundColor: ['#ff6384', '#36a2eb', '#ffce56', '#4bc0c0'],
+                data: [30, 15, 20, 35],
+                backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
             }]
         },
         options: {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'bottom',
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.label + ': $' + tooltipItem.raw;
+                        }
+                    }
                 }
             }
         }
     });
 
-    // Income vs. Expenses Bar Chart
-    var ctxIncomeExpense = document.getElementById('incomeExpenseChart').getContext('2d');
-    new Chart(ctxIncomeExpense, {
+    var ctx2 = document.getElementById('incomeExpenseChart').getContext('2d');
+    var incomeExpenseChart = new Chart(ctx2, {
         type: 'bar',
         data: {
-            labels: ['Income', 'Expenses'],
-            datasets: [{
-                label: 'Amount',
-                data: [incomeData[0], expenseData.reduce((a, b) => a + b, 0)],
-                backgroundColor: ['#36a2eb', '#ff6384']
-            }]
+            labels: ['January', 'February', 'March', 'April'],
+            datasets: [
+                {
+                    label: 'Income',
+                    data: [3000, 3200, 2800, 3500],
+                    backgroundColor: '#4bc0c0'
+                },
+                {
+                    label: 'Expenses',
+                    data: [2000, 1800, 1600, 2100],
+                    backgroundColor: '#ff9f40'
+                }
+            ]
         },
         options: {
             responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            },
             plugins: {
                 legend: {
-                    display: false,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            return tooltipItem.dataset.label + ': $' + tooltipItem.raw;
+                        }
+                    }
                 }
             }
         }
     });
-
-    // Budget Utilization Line Chart
-    var ctxBudget = document.getElementById('budgetChart').getContext('2d');
-    new Chart(ctxBudget, {
-        type: 'line',
-        data: {
-            labels: ['Budget', 'Expenses'],
-            datasets: [{
-                label: 'Amount',
-                data: [budgetData[0], expenseData.reduce((a, b) => a + b, 0)],
-                borderColor: '#ffce56',
-                fill: false,
-                tension: 0.1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+});

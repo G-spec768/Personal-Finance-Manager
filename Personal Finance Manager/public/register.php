@@ -22,6 +22,5 @@
 <script src="register.js"></script> 
 
 <?php include('../templates/footer.php'); ?>
- 
 </body>
 </html>

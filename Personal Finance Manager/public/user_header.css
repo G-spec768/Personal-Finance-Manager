@@ -8,6 +8,16 @@ header {
     height: 60px;
 }
 
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
 header nav ul {
     list-style-type: none;
     margin: 0;
@@ -23,9 +33,9 @@ header nav ul li {
 header nav ul li a {
     color: #fff; /* White text color for links */
     text-decoration: none;
-    padding: 5px 10px;
-    border-radius: 3px;
-    transition: background-color 0.3s ease;
+    padding: 10px 15px; /* Increased padding for better click area */
+    border-radius: 5px; /* More rounded corners */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 header nav ul li a:hover {

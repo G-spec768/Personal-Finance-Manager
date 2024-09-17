@@ -33,7 +33,6 @@ $budget_items = $result->fetch_all(MYSQLI_ASSOC);
 
 // Set a default theme if not already set
 $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
-
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +40,7 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="budget_styles.css"> 
+    <link rel="stylesheet" href="budget_styles.css"> <!-- Update to use the correct CSS -->
     <title>Manage Budget</title>
 </head>
 <body>

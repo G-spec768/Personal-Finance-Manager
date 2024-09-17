@@ -9,10 +9,15 @@
 <body>
 <?php include('../templates/header.php'); ?>
 
-<div class="container">
-    <h1>Welcome to Your Finance Dashboard</h1>
-    <p>Track and manage your finances with ease. See how you're doing at a glance.</p>
+<div class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Your Finance Dashboard</h1>
+        <p>Effortlessly track and manage your finances with our intuitive tools. Get insights into your spending habits and stay on top of your financial goals.</p>
+        <a href="register.php" class="btn-primary">Get Started</a>
+    </div>
+</div>
 
+<div class="container">
     <section class="charts">
         <div class="chart-wrapper">
             <h3>Expense Breakdown</h3>
@@ -23,17 +28,11 @@
             <h3>Income vs. Expenses</h3>
             <canvas id="incomeExpenseChart"></canvas>
         </div>
-
-        <div class="chart-wrapper">
-            <h3>Budget Utilization</h3>
-            <canvas id="budgetChart"></canvas>
-        </div>
     </section>
 
-
     <section class="cta">
-        <h2>Take Control of Your Finances</h2>
-        <p><a href="register.php">Register</a> or <a href="login.php">login</a> to start now!</p>
+        <h2>Ready to Take Control?</h2>
+        <p>Join us today and gain full control over your finances. <a href="login.php" class="btn-secondary">Login</a> or <a href="register.php" class="btn-secondary">Register</a>.</p>
     </section>
 </div>
 
