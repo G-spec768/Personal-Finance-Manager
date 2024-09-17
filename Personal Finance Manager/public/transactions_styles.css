@@ -1,27 +1,45 @@
 /* public/css/transactions_styles.css */
 
-.transactions-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
 }
 
+/* Container for the transactions page */
+.transactions-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Title styling */
 .transactions-container h1 {
     color: #004080;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    font-size: 28px;
+    text-transform: uppercase;
 }
 
+/* Form styling */
 .transactions-container form {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
+/* Label styling */
 .transactions-container label {
     display: block;
     margin-bottom: 5px;
@@ -31,46 +49,88 @@
     max-width: 400px;
 }
 
+/* Input field styling */
 .transactions-container input[type="date"],
 .transactions-container input[type="text"],
 .transactions-container input[type="number"],
-.transactions-container select,
 .transactions-container input[type="submit"] {
     width: 100%;
     max-width: 400px;
     padding: 10px;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
+    font-size: 14px;
 }
 
+/* Submit button styling */
 .transactions-container input[type="submit"] {
     background-color: #004080;
     color: #fff;
     cursor: pointer;
-    /* margin-top: 10px; */
+    font-weight: bold;
+    transition: background-color 0.3s;
 }
 
 .transactions-container input[type="submit"]:hover {
     background-color: crimson;
 }
 
+/* Table styling */
 #transactions-table {
     width: 100%;
     max-width: 800px;
-    margin: 20px auto;
+    margin: 30px auto;
     border-collapse: collapse;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
-#transactions-table th, #transactions-table td {
+#transactions-table th, 
+#transactions-table td {
     border: 1px solid #ccc;
-    padding: 10px;
+    padding: 12px;
     text-align: left;
+    font-size: 14px;
 }
 
+/* Table header styling */
 #transactions-table th {
     background-color: #004080;
     color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Table body styling */
+#transactions-table td {
+    background-color: #f9f9f9;
+}
+
+/* Success and error message styling */
+.success {
+    color: green;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .transactions-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #transactions-table th, #transactions-table td {
+        font-size: 12px;
+    }
 }

@@ -13,7 +13,7 @@ $sql = "SELECT user_id, username, email, created_at FROM users ORDER BY created_
 $result = $conn->query($sql);
 $users = $result->fetch_all(MYSQLI_ASSOC);
 ?>
-<link rel="stylesheet" href="public/combined_styles.css">
+<link rel="stylesheet" href="admin_stylesheet.css">
 <?php include('../templates/admin_header.php'); ?>
 
 <div class="admin-container">

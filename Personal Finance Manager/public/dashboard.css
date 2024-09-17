@@ -1,7 +1,17 @@
+/* Global Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 /* Dashboard Container */
 .dashboard-container {
     width: 80%;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     background-color: #fff; /* White background color */
     border-radius: 5px;
@@ -10,11 +20,23 @@
     color: #000; /* Black font color */
 }
 
+/* Headings and Paragraphs */
 .dashboard-container h1,
 .dashboard-container p {
     color: #000; /* Black font color */
 }
 
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Sections */
+section {
+    margin-bottom: 20px;
+}
+
+/* Forms and Inputs */
 .dashboard-container form {
     margin-bottom: 30px;
 }
@@ -52,99 +74,42 @@
     background-color: #dc143c; /* Crimson on hover */
 }
 
-.chart-container {
-    margin-top: 30px;
-    position: relative;
-    height: 400px;
-    width: 100%;
-    color: #000; /* Black font color */
-}
-
-header {
-    background-color: #000; /* Black background */
-    padding: 10px 0;
-    margin-bottom: 20px;
-    height: 4em;
-}
-
-nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
-
-nav ul li {
-    margin: 0 15px;
-}
-
-nav ul li a {
-    color: #fff; /* White font color */
-    text-decoration: none;
-    font-weight: bold;
-}
-
-nav ul li a:hover {
-    color: mediumspringgreen;
-    text-decoration: none;
-}
-
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-.dashboard-container {
-    margin: 20px;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
+/* Balance Summary */
 .balance-summary {
     padding: 10px;
     background: #e9f7ef;
-    border-left: 5px solid #28a745;
+    border-left: 5px solid #28a745; /* Green border for positive alert */
     margin-bottom: 10px;
 }
 
+/* Budget Alerts */
 .budget-alert {
     padding: 10px;
     background: #fff3cd;
-    border-left: 5px solid #ffc107;
+    border-left: 5px solid #ffc107; /* Yellow border for warning */
     margin-bottom: 10px;
 }
 
+/* Progress Bar */
 .progress-bar-container {
     width: 100%;
-    background: #ddd;
+    background: #ddd; /* Grey background for progress container */
     border-radius: 5px;
     margin-top: 5px;
 }
 
 .progress-bar {
     height: 20px;
-    background: #28a745;
+    background: #28a745; /* Green background for progress */
     border-radius: 5px;
     text-align: center;
     color: white;
 }
 
+/* Buttons */
 button {
     padding: 10px 20px;
-    background: #007bff;
+    background: #007bff; /* Blue button background */
     border: none;
     color: white;
     border-radius: 5px;
@@ -153,5 +118,15 @@ button {
 }
 
 button:hover {
-    background: #0056b3;
+    background: #0056b3; /* Darker blue on hover */
 }
+
+/* Chart Container */
+.chart-container {
+    margin-top: 30px;
+    position: relative;
+    height: 400px;
+    width: 100%;
+    color: #000; /* Black font color */
+}
+

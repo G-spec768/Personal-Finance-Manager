@@ -51,12 +51,12 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css"> <!-- Reuse the same CSS -->
+    <link rel="stylesheet" href="transactions_styles.css"> <!-- Updated stylesheet link -->
     <title>Transactions</title>
 </head>
 <body>
 <?php include('../templates/user_header.php'); ?>
-<div class="dashboard-container">
+<div class="transactions-container">
     <h1>Your Transactions</h1>
 
     <!-- Form for adding a new transaction -->

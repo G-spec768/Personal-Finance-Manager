@@ -36,7 +36,7 @@ if ($user_id) {
 }
 ?>
 
-<link rel="stylesheet" href="public/combined_styles.css">
+<link rel="stylesheet" href="admin_stylesheet.css">
 <?php include('../templates/admin_header.php'); ?>
 
 <div class="admin-container">

@@ -15,7 +15,6 @@ if ($result && $result->num_rows > 0) {
         $budgets[] = $row;
     }
 } else {
-    // Log the error or handle it appropriately
     echo "Error fetching data: " . $conn->error;
 }
 $conn->close();

@@ -7,26 +7,23 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <nav>
-                <ul>
-                    <li><a href="dashboard.php">Dashboard</a></li>
-                    <li><a href="budget.php">Manage Budget</a></li>
-                    <li><a href="transactions.php">Transactions</a></li>
-                    <li><a href="savings_goals.php">Savings Goals</a></li>
-                    <li><a href="budget_overview.php">Budget Overview</a></li>
-                    <li><a href="all_settings.php">Settings</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                </ul>
-            </nav>
-            <div class="theme-switcher">
-                <label for="theme-switcher">Choose a theme:</label>
-                <select id="theme-switcher">
-                    <option value="light-theme" <?php echo $current_theme === 'light-theme' ? 'selected' : ''; ?>>Light</option>
-                    <option value="dark-theme" <?php echo $current_theme === 'dark-theme' ? 'selected' : ''; ?>>Dark</option>
-                    <option value="solarized-theme" <?php echo $current_theme === 'solarized-theme' ? 'selected' : ''; ?>>Solarized</option>
-                </select>
-            </div>
-        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.php">Dashboard</a></li>
+                <li><a href="budget.php">Manage Budget</a></li>
+                <li><a href="transactions.php">Transactions</a></li>
+                <li><a href="savings_goals.php">Savings Goals</a></li>
+                <li><a href="budget_overview.php">Budget Overview</a></li>
+                <li><a href="all_settings.php">Settings</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+                
+            <label for="theme-switcher">Choose a theme:</label>
+            <select id="theme-switcher">
+                <option value="light-theme" <?php echo $current_theme === 'light-theme' ? 'selected' : ''; ?>>Light</option>
+                <option value="dark-theme" <?php echo $current_theme === 'dark-theme' ? 'selected' : ''; ?>>Dark</option>
+                <option value="solarized-theme" <?php echo $current_theme === 'solarized-theme' ? 'selected' : ''; ?>>Solarized</option>
+            </select>
+        </nav>
     </header>
-    <main>
+  

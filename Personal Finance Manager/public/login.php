@@ -42,7 +42,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../public/register_login.css">
+</head>
+<body>
 <?php include('../templates/header.php'); ?>
 
 <link rel="stylesheet" href="auth_styles.css">
@@ -59,4 +67,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" value="Login">
 </form>
 
-<?php include('../templates/footer.php'); ?>
+<?php include('../templates/footer.php'); ?> 
+</body>
+</html>

@@ -234,6 +234,6 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 </div>
 
 <?php include('../templates/footer.php'); ?>
-<script src="combined.js"></script>
+<script src="all_settings.js"></script>
 </body>
 </html>

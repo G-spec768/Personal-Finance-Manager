@@ -1,4 +1,8 @@
-// index.js
+
+    // Sample data for charts
+    var expenseData = [300, 500, 200, 400];
+    var incomeData = [15000];
+    var budgetData = [1300];
 
 document.addEventListener('DOMContentLoaded', function() {
     var ctx1 = document.getElementById('expenseChart').getContext('2d');

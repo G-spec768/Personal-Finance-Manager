@@ -13,61 +13,61 @@ include('../src/config.php');
 // Fetch user ID from session
 $user_id = $_SESSION['user_id'];
 
-// Fetch current balance
-$balance_query = "SELECT SUM(amount) AS balance FROM transactions WHERE user_id = ?";
+// Balance calculation: Separate income (credits) and expenses (debits)
+$balance_query = "
+    SELECT 
+        SUM(CASE WHEN type = 'credit' THEN amount ELSE 0 END) AS total_income,
+        SUM(CASE WHEN type = 'debit' THEN amount ELSE 0 END) AS total_expense
+    FROM transactions 
+    WHERE user_id = ?";
 $stmt = $conn->prepare($balance_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $balance_result = $stmt->get_result()->fetch_assoc();
-$current_balance = $balance_result['balance'] ?? 0;
+$total_income = $balance_result['total_income'] ?? 0;
+$total_expense = $balance_result['total_expense'] ?? 0;
+$current_balance = $total_income - $total_expense;
 
-// Fetch yesterday's transactions
-$yesterday_query = "SELECT description, amount FROM transactions WHERE user_id = ? AND DATE(created_at) = CURDATE() - INTERVAL 1 DAY";
+// Yesterday's transactions
+$yesterday_query = "SELECT description, amount, type FROM transactions WHERE user_id = ? AND DATE(created_at) = DATE_SUB(CURDATE(), INTERVAL 1 DAY)";
 $stmt = $conn->prepare($yesterday_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $transactions = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Fetch upcoming bills
-$bills_query = "SELECT description, due_date FROM transactions WHERE user_id = ? AND type = 'bill' AND due_date > CURDATE() ORDER BY due_date ASC LIMIT 1";
+// Upcoming bills (show top 3 bills)
+$bills_query = "SELECT description, due_date FROM transactions WHERE user_id = ? AND type = 'bill' AND due_date > CURDATE() ORDER BY due_date ASC LIMIT 3";
 $stmt = $conn->prepare($bills_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
-$upcoming_bill = $stmt->get_result()->fetch_assoc();
+$upcoming_bills = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Fetch budget alerts
+// Budget alerts (with more detailed levels)
 $budget_query = "SELECT category, amount, spent FROM budget WHERE user_id = ?";
 $stmt = $conn->prepare($budget_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $budgets = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Fetch savings goal progress
+// Savings goal progress
 $goal_query = "SELECT goal_name, goal_amount, saved_amount FROM savings_goals WHERE user_id = ?";
 $stmt = $conn->prepare($goal_query);
 $stmt->bind_param("i", $user_id);
 $stmt->execute();
 $goals = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 
-// Set a default theme if not already set
-$current_theme = isset($current_theme) ? $current_theme : 'light-theme';
-
-
 $conn->close();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="dashboard.css">
     <title>Personal Finance Management Dashboard</title>
 </head>
-
 <body>
-    
     <?php include('../templates/user_header.php'); ?>
 
     <div class="dashboard-container">
@@ -83,13 +83,27 @@ $conn->close();
                 <ul>
                     <?php if (!empty($transactions)): ?>
                         <?php foreach ($transactions as $transaction): ?>
-                            <li><?php echo htmlspecialchars($transaction['description']); ?> - $<?php echo number_format($transaction['amount'], 2); ?></li>
+                            <li>
+                                <?php echo htmlspecialchars($transaction['description']); ?> - 
+                                $<?php echo number_format($transaction['amount'], 2); ?> 
+                                (<?php echo htmlspecialchars($transaction['type']); ?>)
+                            </li>
                         <?php endforeach; ?>
                     <?php else: ?>
                         <li>No transactions recorded yesterday.</li>
                     <?php endif; ?>
                 </ul>
-                <p>Upcoming Bill: <?php echo $upcoming_bill ? htmlspecialchars($upcoming_bill['description']) . " due on " . date("F j, Y", strtotime($upcoming_bill['due_date'])) : "No upcoming bills."; ?></p>
+
+                <p>Upcoming Bills:</p>
+                <ul>
+                    <?php if (!empty($upcoming_bills)): ?>
+                        <?php foreach ($upcoming_bills as $bill): ?>
+                            <li><?php echo htmlspecialchars($bill['description']); ?> - Due on <?php echo date("F j, Y", strtotime($bill['due_date'])); ?></li>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <li>No upcoming bills.</li>
+                    <?php endif; ?>
+                </ul>
             </div>
         </section>
 
@@ -100,7 +114,11 @@ $conn->close();
                 <?php foreach ($budgets as $budget): ?>
                     <?php 
                         $spent_percentage = ($budget['spent'] / $budget['amount']) * 100; 
-                        if ($spent_percentage >= 80) {
+                        if ($spent_percentage >= 100) {
+                            echo "<p>Warning: You have exceeded your budget for {$budget['category']}!</p>";
+                        } elseif ($spent_percentage >= 90) {
+                            echo "<p>Warning: You are at 90% of your budget for {$budget['category']}!</p>";
+                        } elseif ($spent_percentage >= 80) {
                             echo "<p>Alert: You are nearing your budget limit for {$budget['category']}!</p>";
                         }
                     ?>
@@ -115,6 +133,7 @@ $conn->close();
             <?php foreach ($goals as $goal): ?>
                 <?php 
                     $progress_percentage = ($goal['saved_amount'] / $goal['goal_amount']) * 100; 
+                    $remaining_amount = $goal['goal_amount'] - $goal['saved_amount'];
                 ?>
                 <div class="goal-card">
                     <p>Savings Goal: <?php echo htmlspecialchars($goal['goal_name']); ?></p>
@@ -123,6 +142,7 @@ $conn->close();
                             <?php echo round($progress_percentage); ?>% Complete
                         </div>
                     </div>
+                    <p>Remaining Amount: $<?php echo number_format($remaining_amount, 2); ?></p>
                     <button class="allocate-funds-btn">Allocate Funds</button>
                 </div>
             <?php endforeach; ?>
@@ -143,5 +163,4 @@ $conn->close();
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard.js"></script>
 </body>
-
 </html>

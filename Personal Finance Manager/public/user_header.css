@@ -1,22 +1,11 @@
-/* user_header.css */
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 
 header {
     background-color: #000; /* Black for header background */
     color: #fff; /* White text color */
-    padding: 10px 0; /* Adjusted padding */
+    padding: 10px 0;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    height: 60px; /* Adjusted height */
+    height: 60px;
 }
 
 header .container {
@@ -33,12 +22,12 @@ header nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: flex;
-    flex-wrap: nowrap; /* Prevent wrapping */
+    text-align: center; /* Center-align the nav items */
 }
 
 header nav ul li {
-    margin: 0 10px; /* Adjusted margin */
+    display: inline-block; /* Inline-block for horizontal alignment */
+    margin-left: 20px;
 }
 
 header nav ul li a {
@@ -50,25 +39,18 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    background-color: #444;
-    color: #dc143c; /* Highlight color on hover */
+    background-color: #444; /* Change background on hover */
+    text-decoration: none;
+    color: #dc143c; /* Change text color on hover */
 }
 
 .theme-switcher {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
+    display: inline-block;
+    margin-left: 20px;
 }
 
 .theme-switcher label {
     margin-right: 10px;
+    color: #fff;
 }
 
-main {
-    padding: 20px;
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
