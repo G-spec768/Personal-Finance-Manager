@@ -14,11 +14,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Login</title>
-    <link rel="stylesheet" href="../public/combined_styles.css"> <!-- Link to combined styles -->
+    <link rel="stylesheet" href="admin_stylesheet.css"> <!-- Link to combined styles -->
 </head>
 <body>
-    <?php include('../templates/admin_header.php'); ?> <!-- Include header -->
-
+ 
     <div class="admin-container">
         <h1>Admin Login</h1>
         <?php if (isset($error)): ?>

@@ -14,10 +14,7 @@
                 <li><a href="transactions.php">Transactions</a></li>
                 <li><a href="savings_goals.php">Savings Goals</a></li>
                 <li><a href="budget_overview.php">Budget Overview</a></li>
-                <!-- <li><a href="profile.php">Profile</a></li> -->
                 <li><a href="all_settings.php">Settings</a></li>
-                <!-- <li><a href="notifications.php">Notifications</a></li>
-                <li><a href="reminders.php">Reminders</a></li> -->
                 <li><a href="logout.php">Logout</a></li>
             </ul>
                 
@@ -29,4 +26,3 @@
             </select>
         </nav>
     </header>
-   <main>

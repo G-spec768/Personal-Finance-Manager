@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Open Create Budget Modal
     openCreateModalButton.addEventListener('click', function() {
-        createBudgetModal.style.display = 'none';
+        createBudgetModal.style.display = 'block';
     });
 
     // Close Create Budget Modal
@@ -72,19 +72,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Fetch and display budget data
     function updateBudgetTable() {
-        fetch('/api/budgets') // Ensure this is a correct URL returning JSON data.
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Populate the table and chart with data
-                populateTable(data);
-                populateChart(data);
-            })
-            .catch(error => console.error('Error fetching budget data:', error));
+        // Directly use budgetData injected from PHP
+        populateTable(budgetData);
+        populateChart(budgetData);
     }
 
     // Populate Budget Table
@@ -135,11 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ]
             },
             options: {
-                responsive: true,
                 scales: {
-                    x: {
-                        beginAtZero: true
-                    },
                     y: {
                         beginAtZero: true
                     }
@@ -148,6 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Initial data fetch
+    // Initial call to populate the table and chart
     updateBudgetTable();
 });

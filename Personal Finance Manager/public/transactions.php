@@ -12,16 +12,25 @@ include('../src/config.php');
 
 // Handle form submission for adding transactions
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_transaction'])) {
-    $date = $_POST['date'];
+    $transaction_date = $_POST['date'];
     $description = $_POST['description'];
     $amount = $_POST['amount'];
     $category = $_POST['category'];
-    
-    // Insert the new transaction into the database
-    $sql = "INSERT INTO transactions (user_id, date, description, amount, category) VALUES (?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param("issds", $_SESSION['user_id'], $date, $description, $amount, $category);
-    $stmt->execute();
+
+    // Validate inputs
+    if (!empty($transaction_date) && !empty($description) && !empty($amount) && !empty($category) && $amount > 0) {
+        // Insert the new transaction into the database
+        $sql = "INSERT INTO transactions (user_id, transaction_date, description, amount, category) VALUES (?, ?, ?, ?, ?)";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("issds", $_SESSION['user_id'], $transaction_date, $description, $amount, $category);
+        if ($stmt->execute()) {
+            $success_message = 'Transaction added successfully.';
+        } else {
+            $error_message = 'Failed to add transaction. Please try again.';
+        }
+    } else {
+        $error_message = 'Invalid input. Please fill in all fields correctly.';
+    }
 }
 
 // Fetch transactions for the logged-in user
@@ -42,16 +51,16 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css"> <!-- Reuse the same CSS -->
+    <link rel="stylesheet" href="transactions_styles.css"> <!-- Updated stylesheet link -->
     <title>Transactions</title>
 </head>
 <body>
 <?php include('../templates/user_header.php'); ?>
-<div class="dashboard-container">
+<div class="transactions-container">
     <h1>Your Transactions</h1>
 
     <!-- Form for adding a new transaction -->
-    <form id="transaction-form">
+    <form id="transaction-form" method="POST">
         <fieldset>
             <legend>Add New Transaction</legend>
             <label for="date">Date:</label>
@@ -66,6 +75,7 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
             <label for="category">Category:</label>
             <input type="text" id="category" name="category" required>
             
+            <input type="hidden" name="add_transaction" value="true">
             <input type="submit" value="Add Transaction">
         </fieldset>
     </form>
@@ -83,7 +93,7 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
         <tbody>
             <?php foreach ($transactions as $transaction): ?>
                 <tr>
-                    <td><?php echo htmlspecialchars($transaction['date']); ?></td>
+                    <td><?php echo htmlspecialchars($transaction['transaction_date']); ?></td>
                     <td><?php echo htmlspecialchars($transaction['description']); ?></td>
                     <td><?php echo htmlspecialchars($transaction['amount']); ?></td>
                     <td><?php echo htmlspecialchars($transaction['category']); ?></td>
@@ -91,9 +101,16 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
             <?php endforeach; ?>
         </tbody>
     </table>
+
+    <?php if (isset($success_message)): ?>
+        <p class="success"><?php echo htmlspecialchars($success_message); ?></p>
+    <?php endif; ?>
+    
+    <?php if (isset($error_message)): ?>
+        <p class="error"><?php echo htmlspecialchars($error_message); ?></p>
+    <?php endif; ?>
 </div>
 
 <?php include('../templates/footer.php'); ?>
-<script src="transactions.js"></script>
 </body>
 </html>

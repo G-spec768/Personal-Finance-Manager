@@ -1,7 +1,7 @@
     // Sample data for charts
     var expenseData = [300, 500, 200, 400];
-    var incomeData = [1500];
-    var budgetData = [1200];
+    var incomeData = [15000];
+    var budgetData = [1300];
 
     // Expense Breakdown Pie Chart
     var ctxExpense = document.getElementById('expenseChart').getContext('2d');

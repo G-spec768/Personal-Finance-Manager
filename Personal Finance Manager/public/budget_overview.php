@@ -5,8 +5,7 @@ include('../src/config.php');
 // Set a default theme if not already set
 $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 
-
-// Fetch data from the 'budgets' table
+// Fetch data from the 'budget' table
 $sql = "SELECT * FROM budget";
 $result = $conn->query($sql);
 
@@ -16,7 +15,6 @@ if ($result && $result->num_rows > 0) {
         $budgets[] = $row;
     }
 } else {
-    // Log the error or handle it appropriately
     echo "Error fetching data: " . $conn->error;
 }
 $conn->close();

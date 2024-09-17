@@ -30,8 +30,8 @@ include('../templates/header.php');
             </div>
 
             <div class="faq-item">
-                <h4 class="faq-question">Question 2: How do I register an account?</div>
-                <p class="faq-answer">To register, click on the "Register" link on the homepage, fill in your details, and agree to the terms and conditions before submitting the form.</div>
+                <div class="faq-question">Question 2: How do I register an account?</div>
+                <div class="faq-answer">To register, click on the "Register" link on the homepage, fill in your details, and agree to the terms and conditions before submitting the form.</div>
             </div>
             
             <div class="faq-item">

@@ -1,4 +1,3 @@
-<!-- public/login.php -->
 <?php
 session_start();
 
@@ -43,12 +42,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../public/register_login.css">
+</head>
+<body>
 <?php include('../templates/header.php'); ?>
 
 <h2>Login</h2>
 <?php if (isset($error)): ?>
-    <p style="color: red;"><?php echo htmlspecialchars($error); ?></p>
+    <p class="error"><?php echo htmlspecialchars($error); ?></p>
 <?php endif; ?>
 <form action="login.php" method="post">
     <label for="username">Username:</label><br>
@@ -58,4 +65,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <input type="submit" value="Login">
 </form>
 
-<?php include('../templates/footer.php'); ?>
+<?php include('../templates/footer.php'); ?> 
+</body>
+</html>

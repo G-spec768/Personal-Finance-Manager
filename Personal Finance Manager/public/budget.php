@@ -41,7 +41,7 @@ $current_theme = isset($current_theme) ? $current_theme : 'light-theme';
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="dashboard.css"> <!-- Reuse the same CSS -->
+    <link rel="stylesheet" href="budget_styles.css"> 
     <title>Manage Budget</title>
 </head>
 <body>
