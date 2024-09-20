@@ -11,7 +11,7 @@ include('../templates/header.php');
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help & FAQ</title>
-    <link rel="stylesheet" href="css/help.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="help.css"> <!-- Link to your CSS -->
 </head>
 <body>
     <div class="help-container">

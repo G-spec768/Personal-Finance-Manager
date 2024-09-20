@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 include('../src/config.php');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
