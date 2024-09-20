@@ -29,6 +29,7 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
             </tr>
         </thead>
         <tbody>
+        </tbody>
     <?php foreach ($users as $user): ?>
         <tr>
             <td><?php echo htmlspecialchars($user['username'] ?? '', ENT_QUOTES, 'UTF-8'); ?></td>
@@ -40,7 +41,6 @@ $users = $result->fetch_all(MYSQLI_ASSOC);
         </tr>
     <?php endforeach; ?>
 </tbody>
-
     </table>
 
     <a href="admin_auth.php?logout=true">Logout</a>
