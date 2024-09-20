@@ -18,12 +18,12 @@
                 <li><a href="logout.php">Logout</a></li>
             </ul>
                 
-            <label for="theme-switcher">Choose a theme:</label>
+            <!-- <label for="theme-switcher">Choose a theme:</label>
             <select id="theme-switcher">
                 <option value="light-theme" <?php echo $current_theme === 'light-theme' ? 'selected' : ''; ?>>Light</option>
                 <option value="dark-theme" <?php echo $current_theme === 'dark-theme' ? 'selected' : ''; ?>>Dark</option>
                 <option value="solarized-theme" <?php echo $current_theme === 'solarized-theme' ? 'selected' : ''; ?>>Solarized</option>
-            </select>
+            </select> -->
         </nav>
     </header>
   
