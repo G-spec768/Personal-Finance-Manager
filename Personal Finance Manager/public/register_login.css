@@ -4,6 +4,17 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    min-height: 80vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff; /* White background for the container */
+    padding: 20px;
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 4px 4px rgba(0,0,0,0.1); /* Subtle shadow for better visual depth */
 }
 
 h2 {
@@ -12,12 +23,13 @@ h2 {
 }
 
 form {
-    width: 300px;
+    
+    width: 400px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 0 10px 6px rgba(0,0,0.6,0.1);
 }
 
 label {

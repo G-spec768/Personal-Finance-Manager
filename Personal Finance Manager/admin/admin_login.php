@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="admin_stylesheet.css"> <!-- Link to combined styles -->
 </head>
 <body>
- 
+<header>Personal Finance Manager Admin Portal</header>
     <div class="admin-container">
         <h1>Admin Login</h1>
         <?php if (isset($error)): ?>

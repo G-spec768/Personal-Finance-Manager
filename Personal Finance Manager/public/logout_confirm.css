@@ -57,7 +57,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-    background-color: #00264d; /* Darker blue */
+    background-color: #dc143c; /* Darker blue */
 }
 
 .cancel-button {
