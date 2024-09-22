@@ -53,20 +53,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include('../templates/header.php'); ?>
 <div class="container">
-
     <h2>Login</h2>
     <?php if (isset($error)): ?>
-        <p class="error-message"><?php echo htmlspecialchars($error); ?></p>
+        <p class="error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
     <form action="login.php" method="post">
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username" required><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password" required><br><br>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        
         <input type="submit" value="Login">
     </form>
-
 </div>
-<?php include('../templates/footer.php'); ?> 
+<?php include('../templates/footer.php'); ?>
 </body>
 </html>
