@@ -1,9 +1,7 @@
-
 header {
     background-color: #000; /* Black for header background */
     color: #fff; /* White text color */
     padding: 10px 0;
-    text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     height: 60px;
 }
@@ -22,13 +20,12 @@ header nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
-    text-align: center; /* Center-align the nav items */
+    display: flex; /* Use flexbox for horizontal alignment */
+    text-align: center;
 }
 
 header nav ul li {
-    display: inline-block; /* Inline-block for horizontal alignment */
     margin-left: 10px;
-    margin-top: 10px;
 }
 
 header nav ul li a {
@@ -36,6 +33,8 @@ header nav ul li a {
     text-decoration: none;
     padding: 10px 15px; /* Increased padding for better click area */
     border-radius: 5px; /* More rounded corners */
+    display: flex; /* Flexbox to align icons and text */
+    align-items: center; /* Center items vertically */
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -43,6 +42,10 @@ header nav ul li a:hover {
     background-color: #444; /* Change background on hover */
     text-decoration: none;
     color: #dc143c; /* Change text color on hover */
+}
+
+header nav ul li a i {
+    margin-right: 8px; /* Space between icon and text */
 }
 
 .theme-switcher {
@@ -55,3 +58,20 @@ header nav ul li a:hover {
     color: #fff;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+    header nav ul {
+        flex-direction: column; /* Stack items vertically on small screens */
+        align-items: flex-start; /* Align items to start */
+    }
+
+    header nav ul li {
+        margin-left: 0; /* Remove left margin */
+        margin-bottom: 10px; /* Space between items */
+    }
+
+    header .container {
+        flex-direction: column; /* Stack header content */
+        align-items: flex-start; /* Align items to start */
+    }
+}
