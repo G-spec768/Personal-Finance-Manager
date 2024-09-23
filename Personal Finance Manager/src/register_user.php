@@ -1,17 +1,26 @@
-<!-- // src/register_user.php -->
 <?php
-include('config.php');
+include('../src/config.php');
 
-$username = $_POST['username'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get the form data
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $username = $_POST['username'];
+    $password = password_hash($_POST['password'], PASSWORD_BCRYPT); // Hash the password
 
-$sql = "INSERT INTO users (username, password) VALUES ('$username', '$password')";
+    // Prepare the SQL statement
+    $sql = "INSERT INTO users (first_name, last_name, email, phone, username, password) VALUES (?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssssss", $first_name, $last_name, $email, $phone, $username, $password);
 
-if ($conn->query($sql) === TRUE) {
-    echo "Registration successful. <a href='../public/login.php'>Login here</a>";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    if ($stmt->execute()) {
+        // Registration successful
+        header('Location: login.php?success=1');
+    } else {
+        // Registration failed
+        $error = "Error: " . $stmt->error;
+    }
 }
-
-$conn->close();
 ?>

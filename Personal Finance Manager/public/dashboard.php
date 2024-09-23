@@ -123,7 +123,7 @@ $conn->close();
                         }
                     ?>
                 <?php endforeach; ?>
-                <button class="adjust-budget-btn" onclick="adjustBudget()">Adjust Spending Plan</button>
+                <button class="adjust-budget-btn" onclick="location.href='budget.php'">Adjust Spending Plan</button>
             </div>
         </section>
 
@@ -138,12 +138,12 @@ $conn->close();
                 <div class="goal-card">
                     <p>Savings Goal: <?php echo htmlspecialchars($goal['goal_name']); ?></p>
                     <div class="progress-bar-container">
-                        <div class="progress-bar" style="width: <?php echo $progress_percentage; ?>%;">
+                        <div class="progress-bar" id="goal-<?php echo htmlspecialchars($goal['goal_name']); ?>-progress" style="width: <?php echo $progress_percentage; ?>%;">
                             <?php echo round($progress_percentage); ?>% Complete
                         </div>
                     </div>
                     <p>Remaining Amount: $<?php echo number_format($remaining_amount, 2); ?></p>
-                    <button class="allocate-funds-btn">Allocate Funds</button>
+                    <button class="allocate-funds-btn" onclick="location.href='savings_goals.php'">Allocate Funds</button>
                 </div>
             <?php endforeach; ?>
         </section>
@@ -154,11 +154,16 @@ $conn->close();
             <div class="summary-chart">
                 <canvas id="spendingChart"></canvas>
             </div>
-            <button class="adjust-budget-btn" onclick="setNewGoals()">Set New Goals</button>
+            <button class="adjust-budget-btn" onclick="location.href='budget.php'">Set New Goals</button>
         </section>
     </div>
 
     <?php include('../templates/footer.php'); ?>
+
+    <script>
+        const budgets = <?php echo json_encode($budgets); ?>;
+        const goals = <?php echo json_encode($goals); ?>;
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="dashboard.js"></script>
