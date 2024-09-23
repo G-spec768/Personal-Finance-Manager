@@ -26,7 +26,8 @@ h2 {
 }
 
 form {
-    width: 100%; /* Use full width of the container */
+    width: 100%;
+    max-width: 500px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -41,7 +42,9 @@ label {
 }
 
 input[type="text"],
-input[type="password"] {
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
     width: 100%;
     padding: 10px; /* Increased padding for better usability */
     margin-bottom: 10px;
@@ -66,18 +69,35 @@ input[type="submit"]:hover {
     background-color: #0056b3;
 }
 
-.error {
+/* Styles for Error Messages */
+.error-message {
     color: red;
     text-align: center;
     margin: 10px 0;
 }
 
+
+/* Checkbox styling for "Forgot Password" */
+input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
 /* Footer Styles */
 footer {
-    background-color: #000; /* Dark blue */
+    background-color: #000; /* Dark footer */
     color: white;
     padding: 10px 0;
     text-align: center;
+    width: 100%;
+    position: relative;
+    bottom: 0;
     margin-top: auto; /* This helps push the footer down */
     position: relative; /* Change to relative for normal flow */
     width: 100%;
@@ -95,7 +115,39 @@ footer {
         font-size: 24px; /* Smaller font size for titles on mobile */
     }
 
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+
+    form {
+        padding: 15px;
+        width: 95%;
+    }
+
+    input[type="submit"] {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    label {
+        font-size: 14px;
+    }
+}
+
+/* Additional Styling for Reset Password */
+.reset-instructions {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #555;
+
     input[type="submit"] {
         padding: 12px; /* Increase padding for buttons on mobile */
     }
+
 }

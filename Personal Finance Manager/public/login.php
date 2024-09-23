@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../public/register_login.css">
+    <link rel="stylesheet" href="register_login.css">
 </head>
 <body>
 <?php include('../templates/header.php'); ?>
@@ -58,12 +58,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="error"><?php echo htmlspecialchars($error); ?></p>
     <?php endif; ?>
     <form action="login.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
-        
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
-        
+        <label for="username">Username:</label><br>
+        <input type="text" id="username" name="username" required><br>
+
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me">Remember Me</label><br>
+
+        <a href="forgot_password.php">Forgot Password?</a><br><br>
+
         <input type="submit" value="Login">
     </form>
 </div>
