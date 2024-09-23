@@ -154,7 +154,9 @@ $conn->close();
             <div class="summary-chart">
                 <canvas id="spendingChart"></canvas>
             </div>
+
             <button class="adjust-budget-btn" onclick="location.href='budget.php'">Set New Goals</button>
+
         </section>
     </div>
 

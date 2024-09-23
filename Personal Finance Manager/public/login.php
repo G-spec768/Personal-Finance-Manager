@@ -53,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
 <?php include('../templates/header.php'); ?>
 <div class="container">
-
     <h2>Login</h2>
     <?php if (isset($error)): ?>
         <p class="error"><?php echo htmlspecialchars($error); ?></p>
@@ -72,8 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <input type="submit" value="Login">
     </form>
-
 </div>
-<?php include('../templates/footer.php'); ?> 
+<?php include('../templates/footer.php'); ?>
 </body>
 </html>
