@@ -11,7 +11,7 @@ body {
 
 .container {
     width: 90%;
-    max-width: 400px; /* Adjusted max-width for better mobile experience */
+    /* max-width: 400px; Adjusted max-width for better mobile experience */
     margin: 20px auto;
     background-color: #fff; /* White background for the container */
     padding: 20px;
@@ -27,7 +27,7 @@ h2 {
 
 form {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
