@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Populate Budget Table
     function populateTable(data) {
+        console.log(data);  // Check if the data structure is correct
         const tableBody = document.querySelector('#budget-table tbody');
         tableBody.innerHTML = ''; // Clear existing rows
         data.forEach(item => {
@@ -113,6 +114,7 @@ document.addEventListener('DOMContentLoaded', function() {
             tableBody.appendChild(row);
         });
     }
+    
 
     // Populate Budget Chart
     function populateChart(data) {

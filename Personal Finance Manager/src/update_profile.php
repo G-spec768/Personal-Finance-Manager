@@ -20,7 +20,7 @@ $email = isset($_POST['email']) ? trim($_POST['email']) : '';
 // Validate the inputs (you can add more validation as needed)
 if (empty($username) || empty($email)) {
     // Redirect back to the profile page with an error message
-    header('Location: ../public/profile.php?status=error');
+    header('Location: ../public/all_settings.php?status=error');
     exit();
 }
 
@@ -32,10 +32,10 @@ $stmt->bind_param("ssi", $username, $email, $user_id);
 // Execute the query and check for errors
 if ($stmt->execute()) {
     // Redirect back to the profile page with a success message
-    header('Location: ../public/profile.php?status=success');
+    header('Location: ../public/all_settings.php?status=success');
 } else {
     // Redirect back to the profile page with an error message
-    header('Location: ../public/profile.php?status=error');
+    header('Location: ../public/all_settings.php?status=error');
 }
 
 $stmt->close();

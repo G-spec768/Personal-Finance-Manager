@@ -1,49 +1,67 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
     color: #333;
+    margin: 0;
+    padding: 0;
 }
 
+/* Dashboard Container */
 .dashboard-container {
-    margin: 20px;
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 h1 {
     color: #007bff;
 }
 
-.morning-check-in, .quick-action, .goal-progress, .end-of-month {
+p {
+    font-size: 16px;
+}
+
+/* Morning Check-In Section */
+.morning-check-in {
     background-color: #ffffff;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.balance-summary ul, .quick-action ul {
+.balance-summary ul {
     list-style-type: none;
     padding: 0;
 }
 
-.balance-summary li, .goal-card {
+.balance-summary li {
     margin: 5px 0;
 }
 
-.progress-bar-container {
-    background-color: #e0e0e0;
-    border-radius: 4px;
-    overflow: hidden;
-    height: 25px;
+.balance-amount {
+    font-weight: bold;
+    color: #28a745;
 }
 
-.progress-bar {
-    height: 100%;
-    background-color: #28a745;
-    text-align: center;
-    color: white;
+/* Quick Action Section */
+.quick-action {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-button {
+.budget-alert {
+    margin-bottom: 20px;
+}
+
+.adjust-budget-btn {
     background-color: #007bff;
     color: white;
     border: none;
@@ -52,24 +70,15 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.adjust-budget-btn:hover {
     background-color: #0056b3;
 }
 
-@media (max-width: 600px) {
-    .dashboard-container {
-        margin: 10px;
-    }
-
-    .dashboard-container h1 {
-        font-size: 24px;
-    }
-}
-
-/* Goal Progress Bar Styles */
+/* Goal Progress Section */
 .goal-progress {
     margin: 20px 0;
 }
+
 .goal-card {
     margin-bottom: 20px;
     padding: 15px;
@@ -77,12 +86,14 @@ button:hover {
     border-radius: 10px;
     background-color: #f9f9f9;
 }
+
 .progress-bar-container {
     height: 20px;
     background-color: #e9ecef;
     border-radius: 5px;
     overflow: hidden;
 }
+
 .progress-bar {
     height: 100%;
     background-color: #007bff;
@@ -91,6 +102,7 @@ button:hover {
     font-size: 12px;
     line-height: 20px;
 }
+
 .allocate-funds-btn {
     margin-top: 10px;
     background-color: #007bff;
@@ -99,6 +111,58 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.allocate-funds-btn:hover {
+    background-color: #0056b3;
+}
+
+/* End of Month Overview Section */
+.end-of-month {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.summary-chart {
+    width: 60%; /* Reduce width */
+    max-width: 500px; /* Adjust maximum width */
+    margin: 20px auto; /* Add some margin for spacing */
+    padding: 10px; /* Add padding for better appearance */
+    background-color: #f9f9f9; /* Optional: Add a background to highlight the chart section */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: #000;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    margin-top: 40px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 2em;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
 
 /* Mobile design */
@@ -112,5 +176,15 @@ button:hover {
     .allocate-funds-btn {
         padding: 8px;
         font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        margin: 10px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 24px;
     }
 }
