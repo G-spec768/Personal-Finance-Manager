@@ -25,13 +25,15 @@
     <input type="text" id="phone" name="phone" required><br>
 
     <label for="username">Username:</label><br>
-    <input type="text" id="username" name="username" required><br>
+    <input type="text" id="username" name="username" required>
+    <span id="username-error" class="error-message"></span><br> <!-- Error message for username -->
 
-    <label for="password">Password:</label>
+    <label for="password">Password:</label><br>
     <input type="password" id="password" name="password" required>
+    <span id="password-error" class="error-message"></span><br> <!-- Error message for password -->
 
-     <input type="submit" value="Register"> 
- </form>
+    <input type="submit" value="Register"> 
+</form>
 </div>
 
 <script src="register.js"></script> 

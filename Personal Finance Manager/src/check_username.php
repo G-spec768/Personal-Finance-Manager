@@ -1,25 +1,27 @@
 <?php
-include('config.php');
+session_start();
+include('config.php'); // Include your database connection
 
-if (isset($_POST['username'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = trim($_POST['username']);
-    
-    // Prepare SQL query to check username existence
-    $sql = "SELECT COUNT(*) FROM users WHERE username = ?";
-    $stmt = $conn->prepare($sql);
+
+    // Check if username is empty
+    if (empty($username)) {
+        echo 'invalid'; // Invalid username
+        exit;
+    }
+
+    // Prepare and execute the SQL statement
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $stmt->bind_result($count);
     $stmt->fetch();
-    
-    // Return response based on username existence
-    if ($count > 0) {
-        echo 'taken';
-    } else {
-        echo 'available';
-    }
-
     $stmt->close();
-    $conn->close();
+
+    // Return 'available' if the username doesn't exist, else return 'taken'
+    echo $count === 0 ? 'available' : 'taken';
+} else {
+    echo 'invalid'; // Invalid request
 }
 ?>
